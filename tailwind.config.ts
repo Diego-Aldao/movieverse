@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { addDynamicIconSelectors } from "@iconify/tailwind";
 
 const config: Config = {
   content: [
@@ -11,16 +12,22 @@ const config: Config = {
       fontFamily: {
         neue: "var(--font-neue-montreal)",
       },
+      transitionDuration: {
+        DEFAULT: "200ms",
+      },
+      transitionTimingFunction: {
+        DEFAULT: "cubic-bezier(0.165, 0.84, 0.44, 1)",
+      },
       colors: {
         "main-black": "#18191A",
         "secondary-black": "#242526",
         hover: "#3A3B3C",
         "main-white": "#E4E6EB",
         "secondary-white": "#B0B3B8",
-        "main-color": "#ccc2dc",
+        "main-color": "#cddc39",
       },
     },
   },
-  plugins: [],
+  plugins: [addDynamicIconSelectors()],
 };
 export default config;
