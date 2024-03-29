@@ -1,3 +1,125 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+p,
+span,
+a,
+li {
+  font-family: var(--font-outfit);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-cabin);
+}
+
+h1,
+h2,
+h3,
+p,
+span,
+a,
+li {
+  color: #e4e6eb;
+}
+
+/*ESTILOS SWIPER HERO MAIN PAGE*/
+.swiper-button-prev,
+.swiper-button-next {
+  top: 35% !important;
+  color: white !important;
+  padding: 25px;
+  border-radius: 50%;
+  background: #0000002f;
+}
+.swiper-button-prev {
+  left: 16px !important;
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  position: relative;
+  font-size: 20px !important;
+}
+.swiper-button-prev:after {
+  left: -2px !important;
+}
+.swiper-button-next:after {
+  left: 2px !important;
+}
+
+@media (min-width: 768px) {
+  .swiper-button-prev {
+    left: 32px !important;
+  }
+  .swiper-button-next {
+    right: 32px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .swiper-button-prev {
+    left: 40px !important;
+    top: 30% !important;
+  }
+  .swiper-button-next {
+    right: 40px !important;
+    top: 30% !important;
+  }
+}
+@media (min-width: 1536px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 40% !important;
+  }
+}
+
+/*ESTILOS SWIPER PAGINACION HERO MAIN PAGE*/
+.swiper-pagination {
+  display: none !important;
+  width: fit-content !important;
+  left: auto !important;
+  right: 40px !important;
+  align-items: center;
+  gap: 8px;
+  bottom: 150px !important;
+  height: fit-content;
+}
+.swiper-pagination-bullet {
+  transition: all 0.2s ease-in-out;
+  background: #e4e6eb !important;
+}
+.swiper-pagination-bullet-active {
+  background: #cddc39 !important;
+  position: relative;
+}
+.swiper-pagination-bullet-active:after {
+  content: "";
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  transition: all 2s ease-in-out;
+  border-radius: 50%;
+  z-index: -1;
+  border: 1px solid #cddc39;
+}
+
+@media (min-width: 1024px) {
+  .swiper-pagination {
+    display: flex !important;
+  }
+}
+@media (min-width: 1280px) {
+  .swiper-pagination-bullet {
+    height: 10px !important;
+    width: 10px !important;
+  }
+}
