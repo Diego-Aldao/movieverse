@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import localFont from "next/font/local";
+import { Cabin, Outfit } from "next/font/google";
+import Header from "@/components/layout/header/Header";
+
+const cabin = Cabin({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: "normal",
+  variable: "--font-cabin",
+});
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: "normal",
+  variable: "--font-outfit",
+});
 
 const neueMontreal = localFont({
   variable: "--font-neue-montreal",
@@ -35,7 +50,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${neueMontreal.variable} bg-main-black`}>
+      <body
+        className={`${neueMontreal.variable} ${cabin.variable} ${outfit.variable} bg-main-black`}
+      >
+        <Header />
         {children}
       </body>
     </html>
