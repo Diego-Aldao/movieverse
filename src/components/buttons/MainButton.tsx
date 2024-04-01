@@ -5,21 +5,25 @@ interface Props {
   icon: string;
   nombre: string;
   destino: string;
+  customStyles?: string;
 }
-export default function MainButton({ icon, nombre, destino }: Props) {
-  const [ref, inView] = useInView({ threshold: 0 });
+export default function MainButton({
+  icon,
+  nombre,
+  destino,
+  customStyles,
+}: Props) {
   return (
     <Link
       href={destino}
-      ref={ref}
-      className={`w-fit transition-all text-main-white self-end relative px-3 py-2 lg:py-1 text-xs bg-[#2425267e] border-main-color border-opacity-50 border rounded-full md:px-4 md:text-sm flex items-center gap-2 delay-[110ms] ${
-        inView ? "left-0 opacity-100" : "-left-16 opacity-0"
-      }`}
+      className={`w-fit text-main-white self-end px-3 py-1 bg-[#2425267e] border-main-white border-opacity-20 border rounded-full flex items-center gap-2 hover:border-opacity-80 transition-colors ${customStyles} group`}
     >
-      <span className="first-letter:uppercase text-main-color font-medium lg:text-lg">
+      <span className="first-letter:uppercase text-inherit md:pb-[2px]">
         {nombre}
       </span>
-      <span className={`${icon} h-4 w-4 lg:h-6 lg:w-6 text-main-color`}></span>
+      <span
+        className={`${icon} h-4 w-4 md:h-6 md:w-6 text-inherit transition-transform group-hover:translate-x-1 translate-x-0`}
+      ></span>
     </Link>
   );
 }
