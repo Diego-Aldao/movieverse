@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import ImagenesSlide from "./ImagenesSlide";
-import { Estreno } from "@/types";
+import { Estreno } from "@/types/fetchTypes";
 import Generos from "./Generos";
 import Slide from "./Slide";
 //Swiper React components
