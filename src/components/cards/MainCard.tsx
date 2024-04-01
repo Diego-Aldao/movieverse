@@ -13,6 +13,7 @@ interface Props {
   generos?: number[];
   apariciones?: KnownFor[];
   mediaType: string;
+  voteCount?: number;
 }
 
 interface PropsAudiovisual {
@@ -20,6 +21,7 @@ interface PropsAudiovisual {
   valoracion?: number;
   generos?: number[];
   mediaType: string;
+  voteCount?: number;
 }
 
 interface PropsPersona {
@@ -32,6 +34,7 @@ function MainContentAudiovisual({
   valoracion,
   generos,
   mediaType,
+  voteCount,
 }: PropsAudiovisual) {
   const listadoGeneros = mediaType === "movie" ? generosPeliculas : generosTV;
   const currentGeneros = listadoGeneros.filter((genero) => {
@@ -52,9 +55,9 @@ function MainContentAudiovisual({
           </li>
         ))}
       </ul>
-      {valoracion && (
+      {valoracion !== undefined && voteCount ? (
         <span
-          className={`valoracion px-3 mt-1 py-[2px] text-xs bg-[#ffffff0e] backdrop-blur-2xl rounded-full relative flex items-center gap-1 z-[2] self-end xl:text-sm ${
+          className={`px-3 mt-1 py-[2px] text-xs bg-[#ffffff0e] backdrop-blur-2xl rounded-full relative flex items-center gap-1 z-[2] self-end xl:text-sm ${
             valoracion >= 7
               ? "text-green-500"
               : valoracion >= 4
@@ -64,6 +67,10 @@ function MainContentAudiovisual({
         >
           <span className="icon-[mdi--star] text-inherit"></span>
           {numberToFixed(valoracion)}
+        </span>
+      ) : (
+        <span className="px-3 mt-1 py-[2px] text-[10px] bg-[#ffffff0e] backdrop-blur-2xl rounded-full relative flex items-center gap-1 z-[2] self-end xl:text-xs">
+          Sin puntuar
         </span>
       )}
     </div>
@@ -93,6 +100,7 @@ export default function MainCard({
   generos,
   apariciones,
   mediaType,
+  voteCount,
 }: Props) {
   const cardCelebridad = mediaType === "person";
   return (
@@ -121,6 +129,7 @@ export default function MainCard({
             valoracion={valoracion}
             generos={generos}
             mediaType={mediaType}
+            voteCount={voteCount}
           />
         )}
       </div>
