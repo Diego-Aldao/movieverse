@@ -39,7 +39,7 @@ const neueMontreal = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Movieverse",
+  title: "Movieverse — Peliculas y Series",
   description: "millones de peliculas y series por descubrir",
 };
 
