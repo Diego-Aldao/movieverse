@@ -7,11 +7,22 @@ interface Props {
   pathImagen: string;
   nombre: string;
   hasButton: boolean;
+  handleClick?: (nombre: string) => void;
 }
 
-export default function MiniCard({ pathImagen, nombre, hasButton }: Props) {
+export default function MiniCard({
+  pathImagen,
+  nombre,
+  hasButton,
+  handleClick,
+}: Props) {
   return (
-    <div className="w-full flex h-[120px] sm:h-full after:bg-[#242526b7] after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full">
+    <div
+      className="w-full flex h-[120px] sm:h-full after:bg-[#242526b7] after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full"
+      onClick={() => {
+        handleClick && handleClick(nombre);
+      }}
+    >
       <Image
         src={`${baseUrlImagenes}${tamañosImagenes.pequeño}${pathImagen}`}
         alt="bg-imagen"
