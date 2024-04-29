@@ -4,7 +4,7 @@ import Filtros from "./Filtros/Filtros";
 import ContentTendencias from "./ContentTendencias";
 import { baseUrlTendencias, lenguajeEsp } from "@/constants/constants";
 import { Filtro } from "@/types/localTypes";
-import CustomSection from "@/containers/PageInicio.tsx/CustomSection";
+import CustomSection from "@/components/containers/CustomSection";
 
 const initialFiltros: Filtro = {
   tiempo: "day",
