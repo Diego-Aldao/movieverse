@@ -1,9 +1,9 @@
 import Celebridades from "@/components/PageInicio/Celebridades/Celebridades";
-import MainContent from "@/components/PageInicio/Hero/MainContent";
+import MainContent from "@/components/PageInicio/Hero/ContentHero";
 import MejoresSeries from "@/components/PageInicio/MejoresSeries/MejoresSeries";
 import Tendencias from "@/components/PageInicio/Tendencias/Tendencias";
 import MainButton from "@/components/buttons/MainButton";
-import CustomSection from "@/containers/PageInicio.tsx/CustomSection";
+import CustomSection from "@/components/containers/CustomSection";
 
 export default function Home() {
   return (
