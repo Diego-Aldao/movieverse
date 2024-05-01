@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import generosPeliculas from "@/generos.json";
 import generosTV from "@/generosTV.json";
+import Link from "next/link";
 
 interface Props {
   nombre?: string;
@@ -14,6 +15,7 @@ interface Props {
   apariciones?: KnownFor[];
   mediaType: string;
   voteCount?: number;
+  id: number;
 }
 
 interface PropsAudiovisual {
@@ -101,10 +103,21 @@ export default function MainCard({
   apariciones,
   mediaType,
   voteCount,
+  id,
 }: Props) {
-  const cardCelebridad = mediaType === "person";
+  const currentMediaType =
+    mediaType === "movie"
+      ? "peliculas"
+      : mediaType === "tv"
+      ? "series"
+      : "celebridades";
+  const cardCelebridad = currentMediaType === "celebridades";
+
   return (
-    <div className="card w-full min-h-[250px] relative after:absolute after:inset-[3px] md:after:inset-[4px] before:inset-[3px] md:before:inset-[4px] before:absolute before:bg-[#1010103b] rounded-md after:rounded-md before:rounded-md">
+    <Link
+      href={`/${currentMediaType}/${id}`}
+      className="card w-full min-h-[250px] relative after:absolute after:inset-[3px] md:after:inset-[4px] before:inset-[3px] md:before:inset-[4px] before:absolute before:bg-[#1010103b] rounded-md after:rounded-md before:rounded-md"
+    >
       <div className="imagen rounded-md h-full w-full overflow-hidden">
         <Image
           src={`https://image.tmdb.org/t/p/w500/${imagen}`}
@@ -133,6 +146,6 @@ export default function MainCard({
           />
         )}
       </div>
-    </div>
+    </Link>
   );
 }
