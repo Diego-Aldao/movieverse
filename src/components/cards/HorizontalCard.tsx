@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { baseUrlImagenes, tamañosImagenes } from "@/constants/constants";
+import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import Generos from "../Generos";
 import { numberToFixed } from "@/utils/fixedNumbers";
 import { Audiovisual, Serie } from "@/types/fetchTypes";
@@ -14,7 +14,7 @@ export default function HorizontalCard({ item }: Props) {
   return (
     <div className="cardSerie z-[2] max-w-[370px] md:max-w-[700px] xl:max-w-[900px] w-full  rounded-md overflow-hidden after:inset-0 after:absolute relative after:bg-gradient-to-r after:from-secondary-black after:via-[#242526b7]  after:overflow-hidden after:to-transparent min-h-[200px] h-[200px] md:h-[300px] xl:h-[400px]  lg:h-auto lg:max-h-[320px] xl:max-h-full">
       <Image
-        src={`${baseUrlImagenes}${tamañosImagenes.pequeño}${item.backdrop_path}`}
+        src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${item.backdrop_path}`}
         alt="bg-imagen"
         width={0}
         height={0}
@@ -22,7 +22,7 @@ export default function HorizontalCard({ item }: Props) {
         className="w-full h-full object-cover lg:hidden"
       />
       <Image
-        src={`${baseUrlImagenes}${tamañosImagenes.mediano}${item.backdrop_path}`}
+        src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${item.backdrop_path}`}
         alt="bg-imagen"
         width={0}
         height={0}
@@ -33,14 +33,14 @@ export default function HorizontalCard({ item }: Props) {
         <div className="header flex gap-2 xl:gap-4">
           <div className="header-image rounded-md overflow-hidden min-h-[105px] xl:min-h-[150] hidden lg:block">
             <Image
-              src={`${baseUrlImagenes}${tamañosImagenes.pequeño}${item.poster_path}`}
+              src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${item.poster_path}`}
               alt="bg-imagen"
               width={70}
               height={0}
               className="xl:hidden"
             />
             <Image
-              src={`${baseUrlImagenes}${tamañosImagenes.pequeño}${item.poster_path}`}
+              src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${item.poster_path}`}
               alt="bg-imagen"
               width={100}
               height={0}

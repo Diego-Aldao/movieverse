@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { baseUrlImagenes, tamañosImagenes } from "@/constants/constants";
+import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import MainButton from "../buttons/MainButton";
 
 interface Props {
@@ -24,7 +24,7 @@ export default function MiniCard({
       }}
     >
       <Image
-        src={`${baseUrlImagenes}${tamañosImagenes.pequeño}${pathImagen}`}
+        src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
         alt="bg-imagen"
         width={0}
         height={0}

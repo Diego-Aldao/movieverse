@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Filtros from "./Filtros/Filtros";
 import ContentTendencias from "./ContentTendencias";
-import { baseUrlTendencias, lenguajeEsp } from "@/constants/constants";
+import { BASE_URL_TRENDING, LENGUAJE_ESP } from "@/constants/constants";
 import { Filtro } from "@/types/localTypes";
 import CustomSection from "@/components/containers/CustomSection";
 
@@ -10,7 +10,7 @@ const initialFiltros: Filtro = {
   tiempo: "day",
   tipo: "all",
 };
-const initialUrl: string = `${baseUrlTendencias}/all/day${lenguajeEsp}`;
+const initialUrl: string = `${BASE_URL_TRENDING}/all/day${LENGUAJE_ESP}`;
 
 export default function Tendencias() {
   const [filtros, setFiltros] = useState<Filtro>(initialFiltros);
@@ -18,7 +18,7 @@ export default function Tendencias() {
 
   useEffect(() => {
     setUrl(
-      `${baseUrlTendencias}/${filtros.tipo}/${filtros.tiempo}${lenguajeEsp}`
+      `${BASE_URL_TRENDING}/${filtros.tipo}/${filtros.tiempo}${LENGUAJE_ESP}`
     );
   }, [filtros]);
 
