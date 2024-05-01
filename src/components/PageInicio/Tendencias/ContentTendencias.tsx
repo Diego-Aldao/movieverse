@@ -24,6 +24,7 @@ export default function ContentTendencias({ url }: Props) {
             valoracion={tendencia.vote_average}
             voteCount={tendencia.vote_count}
             mediaType={tendencia.media_type}
+            id={tendencia.id}
           />
         ))}
     </div>
