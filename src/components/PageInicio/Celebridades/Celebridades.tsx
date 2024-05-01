@@ -1,11 +1,11 @@
 import MainCard from "@/components/cards/MainCard";
 import fetchData from "@/data/fetchData";
-import { Celebridad, Celebridades } from "@/types/fetchTypes";
+import type { Celebridad, Celebridades } from "@/types/fetchTypes";
 import React from "react";
 import { baseUrlTendencias } from "@/constants/constants";
 
 export default async function Celebridades() {
-  const url = `${baseUrlTendencias}/person/day`;
+  const url = `${baseUrlTendencias}/person/week`;
   const data = await fetchData<Celebridades>(url);
 
   return (
@@ -17,6 +17,7 @@ export default async function Celebridades() {
           nombre={tendencia.name}
           apariciones={tendencia.known_for}
           mediaType={"person"}
+          id={tendencia.id}
         />
       ))}
     </div>
