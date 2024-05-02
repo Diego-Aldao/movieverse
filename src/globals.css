@@ -123,3 +123,11 @@ li {
     width: 10px !important;
   }
 }
+
+.swiper-scrollbar {
+  background: #242526 !important;
+}
+
+.swiper-scrollbar-drag {
+  background: #cddc39 !important;
+}
