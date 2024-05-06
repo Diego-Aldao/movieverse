@@ -220,3 +220,83 @@ export interface SpokenLanguage {
   iso_639_1: string;
   name: string;
 }
+
+export interface Videos {
+  id: number;
+  results: Video[];
+}
+export interface Video {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
+}
+
+export interface Similares {
+  page: number;
+  results: Similar[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface Similar {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: Date;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface RepartoPelicula {
+  id: number;
+  cast: Reparto[];
+  crew: Reparto[];
+}
+export interface Reparto {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: null | string;
+  cast_id?: number;
+  character?: string;
+  credit_id: string;
+  order?: number;
+  department?: string;
+  job?: string;
+}
+
+export interface ImagenesMedia {
+  backdrops: ImagenMedia[];
+  id: number;
+  logos: ImagenMedia[];
+  posters: ImagenMedia[];
+}
+
+export interface ImagenMedia {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1: string | null;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+}
