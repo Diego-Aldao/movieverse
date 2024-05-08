@@ -4,8 +4,10 @@ interface Props {
   tituloOriginal: string;
   estado: string;
   idiomaOriginal: string;
-  presupuesto: number;
-  ingresos: number;
+  presupuesto?: number;
+  ingresos?: number;
+  tipoDeSerie?: string;
+  esSerie?: boolean;
 }
 
 export default function SubInfo({
@@ -14,16 +16,21 @@ export default function SubInfo({
   idiomaOriginal,
   presupuesto,
   ingresos,
+  tipoDeSerie,
+  esSerie,
 }: Props) {
-  const presupuestoFormateado =
-    presupuesto !== 0
+  let presupuestoFormateado;
+  let ingresosFormateado;
+
+  if (!esSerie) {
+    presupuestoFormateado = presupuesto
       ? `$ ${new Intl.NumberFormat("es-AR").format(presupuesto)}`
       : "-";
 
-  const ingresosFormateado =
-    ingresos !== 0
+    ingresosFormateado = ingresos
       ? `$ ${new Intl.NumberFormat("es-AR").format(ingresos)}`
       : "-";
+  }
 
   const nombreLenguajes = new Intl.DisplayNames(["es"], { type: "language" });
 
@@ -55,17 +62,26 @@ export default function SubInfo({
       nombre: "ingresos",
       valor: ingresosFormateado,
     },
+    {
+      id: 6,
+      nombre: "tipo de serie",
+      valor: tipoDeSerie,
+    },
   ];
 
   return (
     <ul className="grid sm:grid-cols-2 lg:grid-cols-1 gap-4">
       {arrayInfo.map((objeto) => (
-        <li className="flex flex-col gap-1" key={objeto.id}>
-          <span className="capitalize">{objeto.nombre}</span>
-          <span className="capitalize text-sm text-secondary-white">
-            {objeto.valor}
-          </span>
-        </li>
+        <>
+          {objeto.valor && (
+            <li className="flex flex-col gap-1" key={objeto.id}>
+              <span className="capitalize">{objeto.nombre}</span>
+              <span className="capitalize text-sm text-secondary-white">
+                {objeto.valor}
+              </span>
+            </li>
+          )}
+        </>
       ))}
     </ul>
   );
