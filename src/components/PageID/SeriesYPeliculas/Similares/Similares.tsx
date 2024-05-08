@@ -3,10 +3,10 @@ import Image from "next/image";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomSection";
 
-import type { Reviews, Similares } from "@/types/fetchTypes";
+import type { Similar } from "@/types/fetchTypes";
 
 interface Props {
-  similares: Reviews;
+  similares: Similar;
 }
 
 export default function Similares({ similares }: Props) {
@@ -26,7 +26,7 @@ export default function Similares({ similares }: Props) {
             className="relative flex items-center justify-center after:absolute after:inset-0 after:bg-[#101010c7] rounded overflow-hidden max-h-[100px] lg:max-h-[150px]"
           >
             <span className="absolute font-semibold z-[2] text-xs md:text-sm w-full text-center line-clamp-1 px-2 lg:text-base xl:text-lg">
-              {similar.name}
+              {"name" in similar ? similar.name : similar.title}
             </span>
             <Image
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${similar.backdrop_path}`}
