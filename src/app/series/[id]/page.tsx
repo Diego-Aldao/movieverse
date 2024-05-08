@@ -4,9 +4,9 @@ import FetchDataClient from "@/data/fetchDataClient";
 import { DetalleSeries } from "@/types/fetchTypes";
 import { useParams } from "next/navigation";
 import React from "react";
-import Hero from "@/components/PageID/SeriesYPeliculas/Hero/NewHero";
-import Reparto from "@/components/PageID/SeriesYPeliculas/Reparto/NewReparto";
-import NewMedia from "@/components/PageID/SeriesYPeliculas/Media/Imagenes";
+import Hero from "@/components/PageID/SeriesYPeliculas/Hero/Hero";
+import Reparto from "@/components/PageID/SeriesYPeliculas/Reparto/Reparto";
+import Media from "@/components/PageID/SeriesYPeliculas/Media/Media";
 import Redes from "@/components/PageID/SeriesYPeliculas/Aside/Redes/Redes";
 import SubInfo from "@/components/PageID/SeriesYPeliculas/Aside/SubInfo/SubInfo";
 import Similares from "@/components/PageID/SeriesYPeliculas/Similares/Similares";
@@ -45,14 +45,14 @@ export default function SeriesID() {
               <MainInfoHero
                 generos={serie.genres}
                 estreno={serie.first_air_date}
-                duracion={serie.episode_run_time}
+                duracion={serie.episode_run_time[0]}
                 edadMinima={serie.content_ratings.results[0]}
               />
             </>
           </Hero>
           <section className="main-content px-4 md:px-8 lg:px-10 max-w-7xl mx-auto 2xl:px-0 pb-20 grid w-full gap-12 lg:grid-cols-[2.5fr,1fr] lg:gap-x-4 xl:gap-x-8">
             <Reparto cast={serie.aggregate_credits.cast} />
-            <NewMedia
+            <Media
               id={id}
               idiomaOriginal={serie.original_language}
               mediaType="serie"
