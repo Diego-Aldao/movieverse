@@ -6,9 +6,9 @@ import MainTag from "@/components/tags/MainTag";
 
 interface Props {
   estreno: string;
-  duracion: never[] | number[];
+  duracion?: number;
   generos: Genre[];
-  edadMinima: ContentRatingsResult;
+  edadMinima?: ContentRatingsResult;
 }
 
 export default function MainInfoHero({
@@ -20,11 +20,9 @@ export default function MainInfoHero({
   return (
     <div className="sub-info flex items-center gap-4 flex-wrap">
       <MainTag>{getYearFromDate(estreno)}</MainTag>
-      {duracion.length >= 1 && (
-        <MainTag>{getDurationFromMinutes(duracion[0])}</MainTag>
-      )}
+      {duracion && <MainTag>{getDurationFromMinutes(duracion)}</MainTag>}
       {edadMinima && <MainTag>{edadMinima.rating}</MainTag>}
-      {duracion && generos.length >= 1 && (
+      {estreno && generos.length >= 1 && (
         <span className="hidden sm:inline-block h-[2px] w-[2px] rounded-full bg-secondary-white"></span>
       )}
       {generos.length >= 1 && (
