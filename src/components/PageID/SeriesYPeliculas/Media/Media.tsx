@@ -5,19 +5,25 @@ import Videos from "./Videos";
 import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomSection";
 import Filtros from "./Filtros";
 import FetchDataClient from "@/data/fetchDataClient";
-import { BASE_URL_MOVIE_DETAIL } from "@/constants/constants";
+import {
+  BASE_URL_MOVIE_DETAIL,
+  BASE_URL_SERIE_DETAIL,
+} from "@/constants/constants";
 import { ImagenesMedia } from "@/types/fetchTypes";
 import SkeletonMedia from "@/components/skeletons/PagePeliculasSeries/SkeletonMedia";
 
 interface Props {
+  idiomaOriginal: string;
   id: string | string[];
+  mediaType: string;
 }
 
-export default function Media({ id }: Props) {
+export default function NewMedia({ id, idiomaOriginal, mediaType }: Props) {
+  const BASE_URL =
+    mediaType === "serie" ? BASE_URL_SERIE_DETAIL : BASE_URL_MOVIE_DETAIL;
   const { data: imagenes, loading } = FetchDataClient<ImagenesMedia>(
-    `${BASE_URL_MOVIE_DETAIL}${id}/images`
+    `${BASE_URL}${id}/images?include_image_language=${idiomaOriginal}%2Ces%2Cnull`
   );
-
   const [currentMedia, setCurrentMedia] = useState<string>("wallpapers");
   const [imagenesMedia, setImagenesMedia] = useState<string[]>([]);
 
@@ -35,6 +41,7 @@ export default function Media({ id }: Props) {
       {imagenes && imagenesMedia.length >= 1 && (
         <CustomSection
           titulo="media"
+          customStyles="lg-col-start-1"
           headerChildren={
             <Filtros
               setCurrentMedia={setCurrentMedia}
@@ -45,7 +52,7 @@ export default function Media({ id }: Props) {
           }
         >
           {currentMedia === "videos" ? (
-            <Videos />
+            <Videos id={id} baseUrl={BASE_URL} />
           ) : (
             <MediaContent imagenesUrls={imagenesMedia} tipo={currentMedia} />
           )}
