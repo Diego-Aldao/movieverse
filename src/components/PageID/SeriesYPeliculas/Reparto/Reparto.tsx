@@ -4,10 +4,10 @@ import MainCard from "@/components/cards/MainCard/MainCard";
 import ContentCelebridad from "@/components/cards/MainCard/ContentCelebridad";
 import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomSection";
 import SwiperReparto from "./SwiperReparto";
-import { CastSeries } from "@/types/fetchTypes";
+import { CastPeliculas, CastSeries } from "@/types/fetchTypes";
 
 interface Props {
-  cast: CastSeries[];
+  cast: CastSeries[] | CastPeliculas[];
 }
 
 export default function Reparto({ cast }: Props) {
@@ -21,10 +21,17 @@ export default function Reparto({ cast }: Props) {
               mediaType="person"
               id={actor.id}
             >
-              <ContentCelebridad
-                nombre={actor.name}
-                personaje={actor.roles[0].character || ""}
-              />
+              {"roles" in actor ? (
+                <ContentCelebridad
+                  nombre={actor.name}
+                  personaje={actor.roles[0].character || ""}
+                />
+              ) : (
+                <ContentCelebridad
+                  nombre={actor.name}
+                  personaje={actor.character}
+                />
+              )}
             </MainCard>
           </SwiperSlide>
         ))}
