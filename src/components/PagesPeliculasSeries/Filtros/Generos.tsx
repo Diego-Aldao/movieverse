@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from "react";
 import generosPeliculas from "@/generos.json";
 import generosSeries from "@/generosTV.json";
-import type { Filtros } from "./Filtros";
+import { FiltrosFetch } from "@/types/localTypes";
 
 interface Props {
-  setFiltros: React.Dispatch<React.SetStateAction<Filtros>>;
-  filtros: Filtros;
+  setFiltros: React.Dispatch<React.SetStateAction<FiltrosFetch>>;
+  filtros: FiltrosFetch;
   mediaType: "movie" | "tv";
-  initialFiltros: Filtros;
+  initialFiltros: FiltrosFetch;
 }
 
 export default function Generos({
