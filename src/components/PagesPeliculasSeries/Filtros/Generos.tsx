@@ -1,19 +1,29 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import generosPeliculas from "@/generos.json";
 import generosSeries from "@/generosTV.json";
-import { Filtros } from "./Filtros";
+import type { Filtros } from "./Filtros";
 
 interface Props {
   setFiltros: React.Dispatch<React.SetStateAction<Filtros>>;
   filtros: Filtros;
   mediaType: "movie" | "tv";
+  initialFiltros: Filtros;
 }
 
-export default function Generos({ filtros, setFiltros, mediaType }: Props) {
+export default function Generos({
+  filtros,
+  initialFiltros,
+  setFiltros,
+  mediaType,
+}: Props) {
   const listadoGeneros =
     mediaType === "movie" ? generosPeliculas : generosSeries;
   const [currentGeneros, setCurrentGeneros] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (filtros === initialFiltros) setCurrentGeneros([]);
+  }, [filtros, initialFiltros]);
 
   const handleGeneros = (valor: number) => {
     let nuevoArrayGeneros;
@@ -36,13 +46,13 @@ export default function Generos({ filtros, setFiltros, mediaType }: Props) {
     }
   };
   return (
-    <div className="generos flex flex-col gap-2 lg:w-[62%]">
+    <div className="generos flex flex-col gap-2 max-w-[800px xl:w-[60%]">
       <span className="text-sm capitalize">géneros:</span>
       <ul className="flex flex-wrap gap-2">
         {listadoGeneros.map((genero) => (
           <li
             key={genero.id}
-            className={`py-1 px-3 text-xs rounded-full capitalize transition-colors ${
+            className={`py-1 px-3 text-xs rounded-full capitalize transition-colors cursor-pointer hover:border-secondary-white border border-transparent ${
               currentGeneros.includes(genero.id)
                 ? "bg-main-color text-main-black"
                 : "bg-main-black text-main-white"
