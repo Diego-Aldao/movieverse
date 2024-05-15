@@ -8,9 +8,13 @@ interface Props {
 }
 
 export default function Hero({ imagenes }: Props) {
+  const cantidadDeImagenes =
+    imagenes.profiles.length > 6
+      ? imagenes.profiles.slice(1, 7)
+      : imagenes.profiles.slice(0, 6);
   return (
     <div className="hero absolute top-0 left-0 w-full after:absolute after:inset-0 after:bg-[#101010ce] hidden lg:grid grid-cols-6 gap-x-8">
-      {imagenes.profiles.slice(1, 7).map((imagen, index) => (
+      {cantidadDeImagenes.map((imagen, index) => (
         <div
           className={`imagen rounded-md overflow-hidden ${
             index % 2 === 0 ? "pt-20" : "pb-20"
@@ -23,7 +27,6 @@ export default function Hero({ imagenes }: Props) {
             width={0}
             height={0}
             sizes="100vw"
-            className="w-full h-full object-cover"
           />
         </div>
       ))}
