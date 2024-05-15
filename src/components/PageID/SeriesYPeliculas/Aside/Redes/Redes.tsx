@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { RedesSociales } from "@/types/localTypes";
 import filterRedesSociales from "@/utils/filterRedesSociales";
-import FetchDataClient from "@/data/fetchDataClient";
 import { BASE_URL_MOVIE_DETAIL } from "@/constants/constants";
-import SkeletonRedes from "@/components/skeletons/PagePeliculasSeries/SkeletonRedes";
 import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomSection";
+import fetchData from "@/data/fetchData";
 
 interface Props {
-  id: string | string[];
+  id: string;
 }
 
 const iconosRedes: RedesSociales = {
@@ -19,23 +18,15 @@ const iconosRedes: RedesSociales = {
   wikidata: "icon-[simple-icons--wikidata]",
 };
 
-export default function Redes({ id }: Props) {
-  const { data: redes, loading } = FetchDataClient<RedesSociales>(
+export default async function Redes({ id }: Props) {
+  const redes = await fetchData<RedesSociales>(
     `${BASE_URL_MOVIE_DETAIL}${id}/external_ids`
   );
-  const [redesFiltradas, setRedesFiltradas] =
-    useState<{ [x: string]: string }[]>();
-
-  useEffect(() => {
-    if (!redes) return;
-    const redesFiltradas = filterRedesSociales(redes);
-    setRedesFiltradas(redesFiltradas);
-  }, [redes]);
+  const redesFiltradas = filterRedesSociales(redes);
 
   return (
     <CustomSection titulo="redes" asideSection={true}>
-      {loading && <SkeletonRedes />}
-      {redesFiltradas && (
+      {redesFiltradas.length >= 1 && (
         <ul className="redes flex gap-4">
           {redesFiltradas.map((red) => {
             let keyRedSocial = Object.keys(red)[0];
@@ -47,7 +38,9 @@ export default function Redes({ id }: Props) {
                   href={`https://www.${keyRedSocial}.com/${
                     keyRedSocial === "wikidata"
                       ? "wiki/"
-                      : keyRedSocial === "imdb" && "title/"
+                      : keyRedSocial === "imdb"
+                      ? "title/"
+                      : ""
                   }${valueRedSocial}`}
                   target="_blank"
                 >
