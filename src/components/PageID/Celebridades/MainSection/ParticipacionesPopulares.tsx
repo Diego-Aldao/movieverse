@@ -39,7 +39,7 @@ export default function ParticipacionesPopulares({
   };
 
   return (
-    <div className="papelas-mas-conocidos flex flex-col gap-2">
+    <div className="papelas-mas-conocidos flex flex-col gap-2 lg:min-h-[275px] xl:min-h-[360px]">
       <h2 className="text-xl md:text-2xl font-semibold capitalize">
         participaciones populares
       </h2>
@@ -65,7 +65,6 @@ export default function ParticipacionesPopulares({
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="w-full h-full object-cover"
               />
             </Link>
           ))}
