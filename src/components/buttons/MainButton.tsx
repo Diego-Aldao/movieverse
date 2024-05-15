@@ -1,17 +1,18 @@
 import Link from "next/link";
-import { useInView } from "react-intersection-observer";
 
 interface Props {
   icon: string;
   nombre: string;
   destino: string;
   customStyles?: string;
+  customIconStyles?: string;
 }
 export default function MainButton({
   icon,
   nombre,
   destino,
   customStyles,
+  customIconStyles,
 }: Props) {
   return (
     <Link
@@ -22,7 +23,7 @@ export default function MainButton({
         {nombre}
       </span>
       <span
-        className={`${icon} h-4 w-4 md:h-6 md:w-6 text-inherit transition-transform group-hover:translate-x-1 translate-x-0`}
+        className={`${icon} h-4 w-4 ${customIconStyles} text-inherit transition-transform group-hover:translate-x-1 translate-x-0`}
       ></span>
     </Link>
   );
