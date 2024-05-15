@@ -43,7 +43,11 @@ export default function Peliculas() {
 
   return (
     <MainSection titulo="peliculas">
-      <Filtros setUrlFetch={setUrlFetch} pageNumber={pageNumber} />
+      <Filtros
+        setUrlFetch={setUrlFetch}
+        pageNumber={pageNumber}
+        mediaType="movie"
+      />
       <ContenidoPrincipal>
         {loading && <SkeletonMainCard cantidad={20} />}
         {currentPeliculas && currentPeliculas.length >= 1 && (
