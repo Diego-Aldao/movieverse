@@ -76,9 +76,9 @@ export default function Peliculas() {
                 <SkeletonMainCard cantidad={10} />
               </div>
             )}
+            {(!currentPeliculas || currentPeliculas.length === 0) && <NoData />}
           </>
         )}
-        {(!currentPeliculas || currentPeliculas.length === 0) && <NoData />}
       </ContenidoPrincipal>
     </MainSection>
   );
