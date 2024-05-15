@@ -19,7 +19,7 @@ export default function HorizontalCard({ item }: Props) {
         width={0}
         height={0}
         sizes="100vw"
-        className="w-full h-full object-cover lg:hidden"
+        className="lg:hidden"
       />
       <Image
         src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${item.backdrop_path}`}
@@ -27,7 +27,7 @@ export default function HorizontalCard({ item }: Props) {
         width={0}
         height={0}
         sizes="100vw"
-        className="w-full h-full object-cover hidden lg:block"
+        className="hidden lg:block"
       />
       <div className="card-serie-content absolute w-full h-full top-0 left-0 z-[2] xl:gap-4 p-4 flex flex-col gap-2 md:p-8">
         <div className="header flex gap-2 xl:gap-4">
@@ -71,7 +71,7 @@ export default function HorizontalCard({ item }: Props) {
         <MainButton
           icon="icon-[mdi--arrow-right-thin]"
           nombre="ver detalle"
-          destino="/series"
+          destino={`/series/${item.id}`}
           customStyles="mt-auto text-xs md:text-base px-4 md:px-6 bg-[#242526a8]"
         />
       </div>
