@@ -1,3 +1,4 @@
+import { estadosPeliculas } from "@/utils/traducciones";
 import React from "react";
 
 interface Props {
@@ -46,6 +47,7 @@ export default function SubInfo({
       id: 2,
       nombre: "estado",
       valor: estado,
+      needTranslate: true,
     },
     {
       id: 3,
@@ -77,7 +79,9 @@ export default function SubInfo({
             <li className="flex flex-col gap-1" key={objeto.id}>
               <span className="capitalize">{objeto.nombre}</span>
               <span className="capitalize text-sm text-secondary-white">
-                {objeto.valor}
+                {objeto.needTranslate
+                  ? estadosPeliculas[objeto.valor]
+                  : objeto.valor}
               </span>
             </li>
           )}
