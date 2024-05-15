@@ -3,6 +3,7 @@ import "../globals.css";
 import localFont from "next/font/local";
 import { Cabin, Outfit } from "next/font/google";
 import Header from "@/components/layout/header/Header";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const cabin = Cabin({
   subsets: ["latin"],
@@ -53,8 +54,10 @@ export default function RootLayout({
       <body
         className={`${neueMontreal.variable} ${cabin.variable} ${outfit.variable} bg-main-black`}
       >
-        <Header />
-        {children}
+        <SkeletonTheme baseColor="#313131" highlightColor="#525252">
+          <Header />
+          {children}
+        </SkeletonTheme>
       </body>
     </html>
   );
