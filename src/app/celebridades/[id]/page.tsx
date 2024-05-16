@@ -8,8 +8,8 @@ import Redes from "@/components/PageID/Celebridades/Aside/Redes";
 import SubInfo from "@/components/PageID/Celebridades/Aside/SubInfo";
 import Biografia from "@/components/PageID/Celebridades/MainSection/Biografia";
 import ParticipacionesPopulares from "@/components/PageID/Celebridades/MainSection/ParticipacionesPopulares";
-import TableCast from "@/components/PageID/Celebridades/MainSection/Tablas/TableCast";
-import TableCrew from "@/components/PageID/Celebridades/MainSection/Tablas/TableCrew";
+import TableRoles from "@/components/PageID/Celebridades/MainSection/Tablas/TableRoles";
+import TablesCrew from "@/components/PageID/Celebridades/MainSection/Tablas/TablesCrew";
 
 export default async function CelebridadId({
   params,
@@ -53,8 +53,15 @@ export default async function CelebridadId({
             conocidoPor={celebridad.known_for_department}
             participaciones={celebridad.combined_credits}
           />
-          <TableCast cast={celebridad.combined_credits.cast} />
-          <TableCrew crew={celebridad.combined_credits.crew} />
+          {celebridad.combined_credits.cast.length >= 1 && (
+            <TableRoles
+              titulo="interpretaciones"
+              participaciones={celebridad.combined_credits.cast}
+            />
+          )}
+          {celebridad.combined_credits.crew.length >= 1 && (
+            <TablesCrew crew={celebridad.combined_credits.crew} />
+          )}
         </div>
       </main>
     </>
