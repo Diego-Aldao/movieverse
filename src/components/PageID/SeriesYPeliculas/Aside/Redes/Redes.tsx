@@ -7,7 +7,7 @@ import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomS
 import fetchData from "@/data/fetchData";
 
 interface Props {
-  id: string;
+  id: string | string[];
 }
 
 const iconosRedes: RedesSociales = {
