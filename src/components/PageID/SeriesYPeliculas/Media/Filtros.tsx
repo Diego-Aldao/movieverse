@@ -1,9 +1,9 @@
-import { ImagenesMedia } from "@/types/fetchTypes";
+import { ImagesSeries } from "@/types/fetchTypes";
 import React from "react";
 
 interface Props {
   setImagenesMedia: React.Dispatch<React.SetStateAction<string[]>>;
-  imagenes: ImagenesMedia;
+  imagenes: ImagesSeries;
   currentMedia: string;
   setCurrentMedia: React.Dispatch<React.SetStateAction<string>>;
 }
