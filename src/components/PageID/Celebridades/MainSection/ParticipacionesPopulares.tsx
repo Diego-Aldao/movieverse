@@ -1,11 +1,6 @@
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import { CombinedCredits } from "@/types/fetchTypes";
-import {
-  filtrarSelfs,
-  ordenarPorAño,
-  ordenarPorPopularidad,
-  quitarParticipacionesSinImagen,
-} from "@/utils/UtilsParticipaciones";
+import { ordenarParticipaciones } from "@/utils/UtilsParticipaciones";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -19,18 +14,11 @@ export default function ParticipacionesPopulares({
   conocidoPor,
   participaciones,
 }: Props) {
-  const ordenarParticipaciones = (conocidoPor: string) => {
-    let participacionesOrdenadas;
-    participacionesOrdenadas =
-      conocidoPor === "Acting" ? participaciones.cast : participaciones.crew;
-    participacionesOrdenadas = filtrarSelfs(participacionesOrdenadas);
-    participacionesOrdenadas = ordenarPorPopularidad(participacionesOrdenadas);
-    participacionesOrdenadas = ordenarPorAño(participacionesOrdenadas);
-    participacionesOrdenadas = quitarParticipacionesSinImagen(
-      participacionesOrdenadas
-    );
-    return participacionesOrdenadas;
-  };
+  const selectedParticipacion =
+    conocidoPor === "Acting" ? participaciones.cast : participaciones.crew;
+  const participacionesOrdenadas = ordenarParticipaciones(
+    selectedParticipacion
+  );
 
   const mediaTypes: { [key: string]: string } = {
     movie: "peliculas",
@@ -44,21 +32,20 @@ export default function ParticipacionesPopulares({
         participaciones populares
       </h2>
       <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-        {ordenarParticipaciones(conocidoPor)
-          .slice(0, 12)
-          .map((participacion) => (
-            <Link
-              href={`/${mediaTypes[participacion.media_type]}/${
-                participacion.id
-              }`}
-              className="imagen h-[30vw] sm:h-[15vw] md:h-[10vw] lg:h-fit flex items-center justify-center relative after:absolute after:inset-0 after:bg-[#10101096] after:z-[1] rounded-md overflow-hidden"
-              key={participacion.id}
-            >
-              <span className="absolute z-[2] w-full text-center line-clamp-1 text-lg sm:text-base px-1 md:text-sm xl:text-base">
-                {"title" in participacion
-                  ? participacion.title
-                  : participacion.name}
-              </span>
+        {participacionesOrdenadas.slice(0, 12).map((participacion) => (
+          <Link
+            href={`/${mediaTypes[participacion.media_type]}/${
+              participacion.id
+            }`}
+            className="h-[30vw] sm:h-[15vw] md:h-[10vw] relative lg:h-fit lg:min-h-[80px] xl:min-h-[110px] 2xl:min-h-[120px] w-full flex items-center justify-center rounded-md overflow-hidden bg-secondary-black"
+            key={participacion.id}
+          >
+            <span className="absolute z-[2] w-full text-center line-clamp-1 text-lg sm:text-base px-1 md:text-sm xl:text-base">
+              {"title" in participacion
+                ? participacion.title
+                : participacion.name}
+            </span>
+            <div className="relative after:absolute after:inset-0 after:bg-[#10101096] after:z-[1] w-full h-full rounded-md overflow-hidden">
               <Image
                 src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${participacion.backdrop_path}`}
                 alt=""
@@ -66,8 +53,9 @@ export default function ParticipacionesPopulares({
                 height={0}
                 sizes="100vw"
               />
-            </Link>
-          ))}
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
