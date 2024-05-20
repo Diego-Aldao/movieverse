@@ -1,13 +1,15 @@
 import Image from "next/image";
-import React from "react";
+import React, { ReactNode } from "react";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import MainButton from "../buttons/MainButton";
 
 interface Props {
-  pathImagen: string;
+  pathImagen?: string;
   nombre: string;
   hasButton: boolean;
   destino?: string;
+  children?: ReactNode;
+  customStyles?: string;
 }
 
 export default function MiniCard({
@@ -15,9 +17,13 @@ export default function MiniCard({
   nombre,
   hasButton,
   destino,
+  children,
+  customStyles,
 }: Props) {
   return (
-    <div className="w-full flex h-[120px] sm:h-full after:bg-[#242526b7] after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full">
+    <div
+      className={`w-full flex h-[120px] sm:h-full after:bg-[#242526b7] after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full ${customStyles}`}
+    >
       <Image
         src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
         alt="bg-imagen"
@@ -25,8 +31,9 @@ export default function MiniCard({
         height={0}
         sizes="100vw"
       />
-      <div className="main-content-mini w-full h-full absolute z-[2] flex flex-col  p-2">
+      <div className="main-content-mini w-full h-full absolute z-[2] flex flex-col p-2 gap-2">
         <h2 className="text-xl line-clamp-1 sm:text-lg md:text-xl">{nombre}</h2>
+        {children}
         {hasButton && destino && (
           <MainButton
             icon="icon-[mdi--arrow-right-thin]"
