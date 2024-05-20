@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { SwiperSlide } from "swiper/react";
 import MainCard from "@/components/cards/MainCard/MainCard";
