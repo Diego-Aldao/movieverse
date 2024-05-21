@@ -35,7 +35,7 @@ export default function MainCard({
       href={`/${currentMediaType}/${id}`}
       className={`card w-full relative after:absolute after:inset-[3px] md:after:inset-[4px] before:inset-[3px] md:before:inset-[4px] before:absolute before:bg-[#1010103b] rounded-md after:rounded-md before:rounded-md border-b-2 border-transparent hover:border-main-color transition-all hover:-top-1 bg-secondary-black ${
         customSizes
-          ? ""
+          ? customSizes
           : "min-h-[65vw] sm:min-h-[44vw] md:min-h-[32vw] xl:min-h-[335px]"
       } ${inView ? "opacity-100 top-0" : "opacity-0 top-4"} `}
     >
