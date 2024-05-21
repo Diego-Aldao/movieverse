@@ -24,7 +24,7 @@ export default function ContentCelebridad({
         {nombre}
       </h1>
       {apariciones && (
-        <ul className="conocido-por relative flex flex-wrap gap-3 gap-y-1">
+        <ul className="conocido-por relative flex flex-wrap gap-3 gap-y-1 max-h-[36px] overflow-hidden">
           {apariciones?.map((aparicion) => (
             <li key={aparicion.id} className="text-xs line-clamp-1">
               {aparicion.name || aparicion.title}

@@ -15,7 +15,7 @@ export default function ItemFiltro({
 }: Props) {
   return (
     <span
-      className={`px-4 text-xs lg:text-sm py-1 capitalize  rounded-full transition-colors ${
+      className={`px-4 text-xs lg:text-sm py-1 capitalize  rounded-full transition-colors cursor-pointer ${
         currentFiltro === valorFiltro
           ? "bg-main-color text-main-black"
           : "bg-[#b0b3b82c]"

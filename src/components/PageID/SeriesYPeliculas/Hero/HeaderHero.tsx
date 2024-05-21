@@ -22,13 +22,13 @@ export default function HeaderHero({
           <span className="md:text-xl">{numberToFixed(votoPromedio)}</span>
         </div>
       ) : (
-        <span className="uppercase text-xs px-3 py-1 bg-[#2425267e] rounded-full w-fit">
+        <span className="uppercase text-xs px-3 py-1 bg-[#2425267e] rounded-full w-fit mb-2">
           sin calificar
         </span>
       )}
 
       <h1
-        className={`w-fit text-3xl uppercase font-semibold sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl max-w-[300px] sm:max-w-[450px] lg:max-w-[550px] relative`}
+        className={`w-fit text-3xl uppercase font-semibold sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl tracking-tight max-w-[300px] sm:max-w-[550px] md:max-w-[700px] lg:max-w-[850px] relative`}
       >
         {titulo}
       </h1>

@@ -46,18 +46,18 @@ export default function MediaContent({ imagenesUrls, tipo }: Props) {
           width={0}
           height={0}
           sizes="100vw"
-          className="w-full h-full object-cover hidden md:inline-block"
+          className="hidden md:inline-block"
         />
       </div>
       <div
-        className={`grid-media grid grid-cols-3 sm:grid-cols-4 gap-2  md:gap-y-4 ${
+        className={`grid-media grid grid-cols-3 sm:grid-cols-4 gap-2 content-evenly md:gap-y-4 ${
           tipo === "wallpapers" && "sm:grid-cols-4"
         }`}
       >
         {imagenesUrls.slice(0, 12).map((imagenUrl) => (
           <div
             key={imagenUrl}
-            className={`rounded-sm overflow-hidden border transition-colors border-opacity-50 after:inset-0 after:absolute after:bg-main-black  relative ${
+            className={`rounded-sm overflow-hidden h-fit border-2 transition-colors border-opacity-50 after:inset-0 after:absolute after:bg-main-black  relative ${
               currentImage === imagenUrl
                 ? "border-main-color after:opacity-0"
                 : "border-transparent after:opacity-50"
@@ -72,7 +72,7 @@ export default function MediaContent({ imagenesUrls, tipo }: Props) {
               width={0}
               height={0}
               sizes="100vw"
-              className="w-full h-full object-cover"
+              className="object-contain"
             />
           </div>
         ))}
