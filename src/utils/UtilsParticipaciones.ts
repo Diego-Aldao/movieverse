@@ -1,18 +1,26 @@
-import { Cast, Crew } from "@/types/fetchTypes";
+import { CastCelebridad, CrewCelebridad } from "@/types/fetchTypes";
 
-export const ordenarPorPopularidad = (participaciones: Crew[] | Cast[]) => {
+export const ordenarPorPopularidad = (
+  participaciones: CrewCelebridad[] | CastCelebridad[]
+) => {
   return participaciones.sort((a, b) => b.popularity - a.popularity);
 };
 
-export const filtrarSelfs = (participaciones: Crew[] | Cast[]) => {
+export const filtrarSelfs = (
+  participaciones: CrewCelebridad[] | CastCelebridad[]
+) => {
   return participaciones.filter(
     (participacion) =>
       !participacion.genre_ids.includes(10767) &&
-      !participacion.genre_ids.includes(10763)
+      !participacion.genre_ids.includes(10763) &&
+      "character" in participacion &&
+      !participacion.character?.includes("Self")
   );
 };
 
-export const unirFechasDeEstreno = (participaciones: Crew[] | Cast[]) => {
+export const unirFechasDeEstreno = (
+  participaciones: CrewCelebridad[] | CastCelebridad[]
+) => {
   return participaciones.map((participacion) => {
     if ("release_date" in participacion) {
       participacion.fecha = participacion.release_date;
@@ -23,7 +31,9 @@ export const unirFechasDeEstreno = (participaciones: Crew[] | Cast[]) => {
   });
 };
 
-export const ordenarPorAño = (participaciones: Crew[] | Cast[]) => {
+export const ordenarPorAño = (
+  participaciones: CastCelebridad[] | CrewCelebridad[]
+) => {
   let participacionesOrdenadas;
   participacionesOrdenadas = unirFechasDeEstreno(participaciones);
   participacionesOrdenadas = participacionesOrdenadas
@@ -43,9 +53,19 @@ export const ordenarPorAño = (participaciones: Crew[] | Cast[]) => {
 };
 
 export const quitarParticipacionesSinImagen = (
-  participaciones: Crew[] | Cast[]
+  participaciones: CrewCelebridad[] | CastCelebridad[]
 ) => {
   return participaciones.filter(
     (participacion) => participacion.backdrop_path !== null
   );
+};
+
+export const ordenarParticipaciones = (
+  participaciones: CrewCelebridad[] | CastCelebridad[]
+) => {
+  participaciones = filtrarSelfs(participaciones);
+  participaciones = ordenarPorPopularidad(participaciones);
+  participaciones = ordenarPorAño(participaciones);
+  participaciones = quitarParticipacionesSinImagen(participaciones);
+  return participaciones;
 };
