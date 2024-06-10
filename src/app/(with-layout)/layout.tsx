@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import "@/globals.css";
 import localFont from "next/font/local";
 import { Cabin, Outfit } from "next/font/google";
 import Header from "@/components/layout/header/Header";
@@ -23,17 +23,17 @@ const neueMontreal = localFont({
   variable: "--font-neue-montreal",
   src: [
     {
-      path: "../fonts/PPNeueMontreal-Book.otf",
+      path: "../../fonts/PPNeueMontreal-Book.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../fonts/PPNeueMontreal-Medium.otf",
+      path: "../../fonts/PPNeueMontreal-Medium.otf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../fonts/PPNeueMontreal-Bold.otf",
+      path: "../../fonts/PPNeueMontreal-Bold.otf",
       weight: "700",
       style: "normal",
     },
