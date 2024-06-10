@@ -10,7 +10,7 @@ import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <main className="w-full">
+    <main className="w-full min-h-screen">
       <Hero />
       <Tendencias />
       <CustomSection titulo="las mejores series">
@@ -28,7 +28,7 @@ export default function Home() {
       </CustomSection>
       <CustomSection
         titulo="celebridades del momento"
-        titleCustomStyles="text-base sm:text-2xl"
+        titleCustomSizes="sm:text-2xl"
       >
         <>
           <Suspense fallback={<SkeletonCelebridades cantidad={20} />}>
