@@ -1,3 +1,5 @@
+import { FiltroPerfil } from "@/types/localTypes";
+
 export const BASE_URL_ESTRENOS =
   "https://api.themoviedb.org/3/movie/now_playing?language=es-MX";
 
@@ -149,5 +151,47 @@ export const PROPIEDADES_FILTRO_ORDEN_SERIES = [
         nombre: "name.desc",
       },
     ],
+  },
+];
+
+//PAGINA PERFIL
+export const GROUP_FILTERS_LIST_PROFILE_PAGE: FiltroPerfil[] = [
+  {
+    id: 1,
+    nombre: "todos",
+    valor: "todos",
+  },
+  {
+    id: 2,
+    nombre: "favoritos",
+    valor: "favorito",
+  },
+  {
+    id: 3,
+    nombre: "guardados",
+    valor: "guardado",
+  },
+];
+
+export const TYPE_FILTERS_LIST_PROFILE_PAGE: FiltroPerfil[] = [
+  {
+    id: 1,
+    nombre: "todos",
+    valor: "todos",
+  },
+  {
+    id: 2,
+    nombre: "peliculas",
+    valor: "movie",
+  },
+  {
+    id: 3,
+    nombre: "series",
+    valor: "tv",
+  },
+  {
+    id: 4,
+    nombre: "celebridades",
+    valor: "person",
   },
 ];
