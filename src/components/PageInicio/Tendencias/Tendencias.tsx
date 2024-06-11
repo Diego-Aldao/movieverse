@@ -10,7 +10,7 @@ const initialFiltros: Filtro = {
   tiempo: "day",
   tipo: "all",
 };
-const initialUrl: string = `${BASE_URL_TRENDING}/all/day${LENGUAJE_ESP}`;
+const initialUrl: string = `${BASE_URL_TRENDING}/all/day?${LENGUAJE_ESP}`;
 
 export default function Tendencias() {
   const [filtros, setFiltros] = useState<Filtro>(initialFiltros);
@@ -18,7 +18,7 @@ export default function Tendencias() {
 
   useEffect(() => {
     setUrl(
-      `${BASE_URL_TRENDING}/${filtros.tipo}/${filtros.tiempo}${LENGUAJE_ESP}`
+      `${BASE_URL_TRENDING}/${filtros.tipo}/${filtros.tiempo}?${LENGUAJE_ESP}`
     );
   }, [filtros]);
 
@@ -27,6 +27,10 @@ export default function Tendencias() {
       titulo="tendencias"
       headerChildren={<Filtros filtros={filtros} setFiltros={setFiltros} />}
     >
+      <span
+        id="tendencias"
+        className="invisible opacity-0 absolute top-0 left-0"
+      ></span>
       <ContentTendencias url={url} />
     </CustomSection>
   );
