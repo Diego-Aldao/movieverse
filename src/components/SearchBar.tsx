@@ -38,7 +38,7 @@ export default function SearchBar() {
         }`}
       >
         <form
-          className="w-full max-w-[400px] md:max-w-[600px] lg:max-w-[700px] mx-auto  ml-auto h-full overflow-hidden bg-main-black bg-opacity-35 flex gap-1 items-center rounded-full"
+          className="w-full max-w-[400px] md:max-w-[600px] xl:max-w-[700px] mx-auto  ml-auto h-full overflow-hidden bg-main-black bg-opacity-35 flex gap-1 items-center rounded-full"
           onSubmit={handleNavigate}
         >
           <button
