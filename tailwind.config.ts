@@ -10,7 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        neue: "var(--font-neue-montreal)",
+        outfit: "var(--font-outfit)",
+        cabin: "var(--font-cabin)",
       },
       transitionDuration: {
         DEFAULT: "200ms",
