@@ -5,7 +5,6 @@ import Tendencias from "@/components/PageInicio/Tendencias/Tendencias";
 import MainButton from "@/components/buttons/MainButton";
 import CustomSection from "@/components/containers/CustomSection";
 import SkeletonCelebridades from "@/components/skeletons/PageInicio/SkeletonCelebridades";
-import SkeletonMejoresSeries from "@/components/skeletons/PageInicio/SkeletonMejoresSeries";
 import { Suspense } from "react";
 
 export default function Home() {
@@ -15,9 +14,7 @@ export default function Home() {
       <Tendencias />
       <CustomSection titulo="las mejores series">
         <>
-          <Suspense fallback={<SkeletonMejoresSeries cantidad={20} />}>
-            <MejoresSeries />
-          </Suspense>
+          <MejoresSeries />
           <MainButton
             icon="icon-[mdi--arrow-right-thin]"
             nombre="ver más series"
