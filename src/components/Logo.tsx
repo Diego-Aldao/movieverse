@@ -7,8 +7,8 @@ interface Props {
 
 export default function Logo({ sloganOn }: Props) {
   return (
-    <Link href="/">
-      <h3 className="capitalize text-main-color  text-2xl lg:text-3xl xl:text-4xl [font-family:var(--font-outfit)] font-bold">
+    <Link href="/" className="w-fit inline-block">
+      <h3 className="capitalize text-main-color  text-2xl lg:text-3xl xl:text-4xl [font-family:var(--font-outfit)] font-bold w-fit">
         movieverse
       </h3>
       {sloganOn && (
