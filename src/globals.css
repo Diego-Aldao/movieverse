@@ -41,22 +41,27 @@ img {
 /*ESTILOS SWIPER HERO MAIN PAGE*/
 .swiper-button-prev,
 .swiper-button-next {
-  top: 35% !important;
-  color: white !important;
+  top: 39% !important;
+  color: #e4e6eb !important;
+  box-shadow: 0 4px 6px -1px transparent;
+  backdrop-filter: blur(4px);
   padding: 25px;
   border-radius: 50%;
-  background: #0000002f;
-  border: 1px solid transparent;
-  transition: border 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background: #18191a44;
+  border: 1px solid #e4e6eb3b;
+  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .swiper-button-prev {
   left: 16px !important;
 }
+.swiper-button-next {
+  right: 16px !important;
+}
 
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-  border: 1px solid #eeff00;
-  color: #eeff00 !important;
+  border: 1px solid #e4e6ebcb;
+  box-shadow: 0 4px 6px -1px #18191a93;
 }
 
 .swiper-button-next:after,
@@ -150,4 +155,14 @@ img {
 
 .swiper-scrollbar-drag {
   background: #cddc39 !important;
+}
+
+/*ESTILOS NEXTUI*/
+
+[data-slot="input-wrapper"] {
+  background-color: #18191a; /*cambiar esto*/
+}
+
+[data-disabled="true"] span {
+  color: #b0b3b8a8;
 }
