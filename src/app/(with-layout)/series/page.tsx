@@ -77,9 +77,13 @@ export default function Series() {
                 <SkeletonMainCard cantidad={10} />
               </div>
             )}
-            {(!currentSeries || currentSeries.length === 0) && <NoData />}
           </>
         )}
+        <>
+          {currentSeries?.length === 0 && series?.results.length === 0 && (
+            <NoData />
+          )}
+        </>
       </ContenidoPrincipal>
     </MainSection>
   );
