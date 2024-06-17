@@ -2,8 +2,9 @@ import Logo from "@/components/Logo";
 import SearchBar from "@/components/SearchBar";
 import React from "react";
 import User from "./User";
-import MenuMobile from "@/components/MenuMobile";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
+import MenuMobile from "./MenuMobile";
+import { INTERNAL_NAVIGATION } from "@/constants/constants";
 
 export default function Header() {
   return (
@@ -12,16 +13,12 @@ export default function Header() {
         <div className="xl:flex-1">
           <Logo />
         </div>
-        <ul className="nav-desktop hidden lg:flex items-center gap-12 xl:flex-1">
-          <li className="font-medium text-base xl:text-lg first-letter:uppercase tracking-wide">
-            <SecondaryButton destino="/peliculas" nombre="peliculas" />
-          </li>
-          <li className=" font-medium text-base xl:text-lg first-letter:uppercase tracking-wide">
-            <SecondaryButton destino="/series" nombre="series de television" />
-          </li>
-          <li className=" font-medium text-base xl:text-lg first-letter:uppercase tracking-wide">
-            <SecondaryButton destino="/celebridades" nombre="celebridades" />
-          </li>
+        <ul className="nav-desktop hidden md:flex items-center gap-12 xl:flex-1">
+          {INTERNAL_NAVIGATION.slice(1, 4).map((item) => (
+            <li key={item.id}>
+              <SecondaryButton destino={item.destino} nombre={item.nombre} />
+            </li>
+          ))}
         </ul>
         <div className="flex items-center gap-4 lg:w-[158px] justify-end xl:flex-1">
           <SearchBar />
