@@ -17,7 +17,7 @@ export default function CustomSection({
 }: Props) {
   return (
     <section
-      className={`flex flex-col gap-8 max-w-7xl mx-auto w-full ${
+      className={`flex flex-col gap-8 max-w-7xl mx-auto w-full relative my-20 ${
         noInlinePadding ? "" : "px-4 md:px-8 lg:px-10 2xl:px-0"
       }`}
     >
@@ -26,7 +26,7 @@ export default function CustomSection({
           className={`uppercase font-medium  flex items-center justify-between gap-12 ${
             titleCustomSizes
               ? titleCustomSizes
-              : "text-2xl lg:text-5xl md:text-4xl"
+              : "text-xl sm:text-2xl lg:text-5xl md:text-4xl"
           }`}
         >
           {titulo}
