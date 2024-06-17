@@ -4,7 +4,7 @@ import React from "react";
 type ItemLista = {
   id: number;
   nombre: string;
-  link: string;
+  destino: string;
 };
 
 interface Props {
@@ -19,9 +19,9 @@ export default function ListadoFooter({ titulo, listado }: Props) {
         {titulo}
       </span>
       <ul className="pl-2 flex flex-col gap-2">
-        {listado.map(({ nombre, id, link }) => (
+        {listado.map(({ nombre, id, destino }) => (
           <li className="capitalize lg:text-lg" key={id}>
-            <Link href={link}>{nombre}</Link>
+            <Link href={destino}>{nombre}</Link>
           </li>
         ))}
       </ul>
