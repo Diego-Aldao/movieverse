@@ -23,10 +23,7 @@ export default function Home() {
           />
         </>
       </CustomSection>
-      <CustomSection
-        titulo="celebridades del momento"
-        titleCustomSizes="sm:text-2xl"
-      >
+      <CustomSection titulo="celebridades del momento">
         <>
           <Suspense fallback={<SkeletonCelebridades cantidad={20} />}>
             <Celebridades />
