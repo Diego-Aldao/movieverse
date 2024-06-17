@@ -8,7 +8,7 @@ interface Props {
 
 export default function CustomMain({ titulo, children, focusedTitle }: Props) {
   return (
-    <main className="px-4 md:px-8 lg:px-10 mt-24 pb-10 lg:mt-48 2xl:px-0 max-w-7xl mx-auto flex flex-col gap-12 min-h-screen overflow-hidden relative">
+    <main className="px-4 md:px-8 lg:px-10 mt-24 pb-10 lg:mt-48 2xl:px-0 max-w-7xl mx-auto flex flex-col gap-12 min-h-screen overflow-hidden relative w-full">
       <header
         className={`flex flex-col ${
           focusedTitle ? "items-center" : "gap-4 md:gap-8"
