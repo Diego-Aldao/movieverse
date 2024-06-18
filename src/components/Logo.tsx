@@ -12,8 +12,8 @@ export default function Logo({ sloganOn }: Props) {
         movieverse
       </h3>
       {sloganOn && (
-        <span className="text-[10px] lg:text-xs uppercase text-sec text-secondary-white font-semibold italic relative -top-1">
-          tu guia del entretenimiento
+        <span className="text-[10px] lg:text-xs uppercase text-main-white font-me italic relative -top-1">
+          cada historia, un universo único
         </span>
       )}
     </Link>
