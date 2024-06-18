@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import imgPerfil from "@/assets/Sin título.png";
+import imgPerfil from "@/assets/perfil.webp";
 import Image from "next/image";
 import { INTERNAL_NAVIGATION } from "@/constants/constants";
 import Link from "next/link";
