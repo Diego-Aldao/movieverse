@@ -63,7 +63,6 @@ export default function Filtros({ setUrlFetch, pageNumber, mediaType }: Props) {
   const updateUrl = (filtros: FiltrosFetch) => {
     const stringFiltros = objectToString(filtros, "&");
     const nuevaUrl = `${baseUrl}${stringFiltros}`;
-    console.log(nuevaUrl);
     setUrlFetch(nuevaUrl);
   };
 

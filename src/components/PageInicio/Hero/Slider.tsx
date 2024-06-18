@@ -56,6 +56,7 @@ export default function Slider() {
                 votoPromedio={estreno.vote_average}
                 descripcion={estreno.overview}
                 id={estreno.id}
+                poster={estreno.poster_path}
                 generos={<Generos generos={estreno.genre_ids} />}
               >
                 <ImagenesSlide

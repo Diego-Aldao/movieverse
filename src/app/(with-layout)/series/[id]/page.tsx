@@ -34,6 +34,9 @@ export default async function SeriesID({ params }: { params: { id: string } }) {
             tagline={serie.tagline}
             votoPromedio={serie.vote_average}
             cantidadDeVotos={serie.vote_count}
+            id={serie.id}
+            poster={serie.poster_path}
+            media_type="tv"
           />
           <MainInfoHero
             generos={serie.genres}

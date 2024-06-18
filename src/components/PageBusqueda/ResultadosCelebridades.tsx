@@ -18,6 +18,7 @@ export default function ResultadosCelebridades({ resultados }: Props) {
       <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 items-stretch content-stretch justify-stretch place-content-stretch">
         {resultados.map((celebridad) => (
           <MainCard
+            nombre={celebridad.name || ""}
             key={celebridad.id}
             imagen={celebridad.profile_path || ""}
             mediaType={celebridad.media_type}

@@ -43,6 +43,9 @@ export default async function DetallePelicula({
             tagline={pelicula.tagline}
             votoPromedio={pelicula.vote_average}
             cantidadDeVotos={pelicula.vote_count}
+            id={pelicula.id}
+            media_type="movie"
+            poster={pelicula.poster_path}
           />
           <MainInfoHero
             generos={pelicula.genres}

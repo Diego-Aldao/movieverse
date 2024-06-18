@@ -18,6 +18,7 @@ export default function Reparto({ cast }: Props) {
         {cast.slice(0, 10).map((actor) => (
           <SwiperSlide key={actor.id} className="pb-8">
             <MainCard
+              nombre={actor.name}
               imagen={actor.profile_path || ""}
               mediaType="person"
               id={actor.id}

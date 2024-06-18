@@ -53,6 +53,7 @@ export default function Celebridades() {
           <>
             {currentCelebridades.map((celebridad) => (
               <MainCard
+                nombre={celebridad.name}
                 imagen={celebridad.profile_path || ""}
                 key={celebridad.id}
                 mediaType="person"

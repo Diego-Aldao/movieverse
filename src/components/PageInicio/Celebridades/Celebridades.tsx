@@ -13,6 +13,7 @@ export default async function Celebridades() {
     <div className="main-content grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5  gap-2 sm:gap-5 sm:gap-y-10 md:gap-y-12 gap-y-7 xl:gap-y-16">
       {celebridades.map((tendencia: Celebridad) => (
         <MainCard
+          nombre={tendencia.name}
           key={tendencia.id}
           imagen={tendencia.profile_path || ""}
           id={tendencia.id}
