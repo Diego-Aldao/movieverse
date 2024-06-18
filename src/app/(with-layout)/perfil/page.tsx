@@ -1,21 +1,21 @@
 import Coleccion from "@/components/PagePerfil/Coleccion";
 import Image from "next/image";
 import React from "react";
-import banner from "@/assets/peakpx.jpg";
-import profile from "@/assets/Sin título.png";
+import banner from "@/assets/banner.png";
+import profile from "@/assets/perfil.webp";
 import NoData from "@/components/errors/NoData";
 
 export default function Perfil() {
   return (
     <main className="w-full">
-      <div className="banner w-full h-[200px] md:h-[300px] lg:h-[400px] xl:h-[450px] rounded-3xl border-4 border-secondary-black overflow-hidden">
+      <div className="banner w-full h-[200px] md:h-[300px] lg:h-[400px] xl:h-[450px] 2xl:h-[500px] rounded-3xl border-4 border-secondary-black overflow-hidden">
         <Image
           src={banner}
           alt=""
           width={0}
           height={0}
           sizes="100vw"
-          className="object-[50%,-0px]"
+          className="object-[50%,0px]"
         />
       </div>
       <header className="header px-4 md:px-8 lg:px-10 2xl:px-0 max-w-7xl mx-auto relative -top-16 lg:-top-20 flex flex-col md:flex-row md:items-end items-center md:justify-between gap-4">
