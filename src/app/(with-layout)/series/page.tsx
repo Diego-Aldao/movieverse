@@ -59,6 +59,7 @@ export default function Series() {
                 key={serie.id}
                 id={serie.id}
                 mediaType="tv"
+                nombre={serie.name}
               >
                 <ContentAudiovisual
                   valoracion={serie.vote_average}
@@ -81,7 +82,7 @@ export default function Series() {
         )}
         <>
           {currentSeries?.length === 0 && series?.results.length === 0 && (
-            <NoData />
+            <NoData nombre="no se encontraron series" />
           )}
         </>
       </ContenidoPrincipal>

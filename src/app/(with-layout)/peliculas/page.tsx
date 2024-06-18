@@ -58,6 +58,7 @@ export default function Peliculas() {
                 key={pelicula.id}
                 mediaType={"movie"}
                 id={pelicula.id}
+                nombre={pelicula.title}
               >
                 <ContentAudiovisual
                   mediaType={"movie"}
@@ -80,7 +81,9 @@ export default function Peliculas() {
         )}
         <>
           {currentPeliculas?.length === 0 &&
-            peliculas?.results.length === 0 && <NoData />}
+            peliculas?.results.length === 0 && (
+              <NoData nombre="no se encontraron peliculas" />
+            )}
         </>
       </ContenidoPrincipal>
     </MainSection>
