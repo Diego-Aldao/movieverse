@@ -1,73 +1,52 @@
 "use client";
+import { TYPE_FILTERS_LIST_PROFILE_PAGE } from "@/constants/constants";
 import { Coleccion } from "@/types/localTypes";
 import React, { useEffect, useState } from "react";
-import FilterGroup from "./FilterGroup";
-import {
-  GROUP_FILTERS_LIST_PROFILE_PAGE,
-  TYPE_FILTERS_LIST_PROFILE_PAGE,
-} from "@/constants/constants";
 
 interface Props {
-  setCurrentColeccion: React.Dispatch<React.SetStateAction<Coleccion[]>>;
-  guardados: Coleccion[];
+  setCurrentColeccion: React.Dispatch<
+    React.SetStateAction<Coleccion[] | undefined>
+  >;
+  coleccion: Coleccion[] | undefined;
 }
 
-interface ValoresFiltros {
-  [key: string]: string;
-}
+export default function Filtros({ coleccion, setCurrentColeccion }: Props) {
+  const [currentFiltro, setCurrentFiltro] = useState<string>("todos");
 
-export default function Filtros({ setCurrentColeccion, guardados }: Props) {
-  const initialFiltros: ValoresFiltros = {
-    grupo: "todos",
-    tipo: "todos",
-  };
-  const [valoresFiltros, setValoresFiltros] =
-    useState<ValoresFiltros>(initialFiltros);
-
-  const handleFiltro = (valor: string, categoria: string) => {
-    setValoresFiltros({
-      ...valoresFiltros,
-      [categoria]: valor,
-    });
+  const handleFiltro = (nombre: string) => {
+    if (!coleccion) return;
+    if (nombre === "todos") {
+      setCurrentColeccion(coleccion);
+    } else {
+      const coleccionFiltrada = coleccion.filter(
+        (item) => item.media_type === nombre
+      );
+      setCurrentColeccion(coleccionFiltrada);
+    }
+    setCurrentFiltro(nombre);
   };
 
   useEffect(() => {
-    let coleccionFiltrada;
-    const getGrupo = (grupo: string) => {
-      return guardados.filter((guardado) => grupo in guardado);
-    };
-    const getTipo = (tipo: string) => {
-      return guardados.filter((guardado) => guardado.media_type === tipo);
-    };
-    if (valoresFiltros.tipo === "todos" && valoresFiltros.grupo === "todos") {
-      coleccionFiltrada = guardados;
-    } else if (valoresFiltros.tipo === "todos") {
-      coleccionFiltrada = getGrupo(valoresFiltros.grupo);
-    } else if (valoresFiltros.grupo === "todos") {
-      coleccionFiltrada = getTipo(valoresFiltros.tipo);
-    } else {
-      coleccionFiltrada = getGrupo(valoresFiltros.grupo);
-      coleccionFiltrada = coleccionFiltrada.filter(
-        (guardado) => guardado.media_type === valoresFiltros.tipo
-      );
-    }
-    setCurrentColeccion(coleccionFiltrada);
-  }, [valoresFiltros]);
+    setCurrentFiltro("todos");
+  }, [coleccion]);
 
   return (
-    <div className="flex flex-col gap-4 xl:flex-row xl:justify-between">
-      <FilterGroup
-        listadoFiltros={TYPE_FILTERS_LIST_PROFILE_PAGE}
-        handleFiltro={handleFiltro}
-        valoresFiltros={valoresFiltros}
-        nombreGrupo="tipo"
-      />
-      <FilterGroup
-        listadoFiltros={GROUP_FILTERS_LIST_PROFILE_PAGE}
-        handleFiltro={handleFiltro}
-        valoresFiltros={valoresFiltros}
-        nombreGrupo="grupo"
-      />
-    </div>
+    <ul className="filtros flex flex-wrap gap-2">
+      {TYPE_FILTERS_LIST_PROFILE_PAGE.map((filtro) => (
+        <li
+          key={filtro.id}
+          onClick={() => {
+            handleFiltro(filtro.valor);
+          }}
+          className={`text-xs capitalize px-3 py-1 rounded-full border border-main-white border-opacity-15 cursor-pointer transition-colors ${
+            currentFiltro === filtro.valor
+              ? "bg-main-color text-main-black"
+              : "bg-main-black text-main-white"
+          }`}
+        >
+          {filtro.nombre}
+        </li>
+      ))}
+    </ul>
   );
 }
