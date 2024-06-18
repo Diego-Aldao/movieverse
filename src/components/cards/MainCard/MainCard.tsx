@@ -12,6 +12,7 @@ interface Props {
   id: number;
   children: ReactNode;
   customSizes?: string;
+  nombre: string;
 }
 
 export default function MainCard({
@@ -20,6 +21,7 @@ export default function MainCard({
   id,
   children,
   customSizes,
+  nombre,
 }: Props) {
   const currentMediaType =
     mediaType === "movie"
@@ -58,7 +60,16 @@ export default function MainCard({
       </div>
       <div className="contenido rounded-md w-full h-full absolute top-0 left-0 z-[2] after:rounded-md after:inset-[3px] md:after:inset-[4px] after:absolute after:bg-gradient-to-t after:from-[#101010] after:via-transparent after:to-transparent flex flex-col justify-between p-2 md:p-3 xl:p-4">
         <header className="flex items-center justify-end relative z-[10]">
-          <UserInteraction isMouseInside={isMouseInside} dropdown={true} />
+          <UserInteraction
+            isMouseInside={isMouseInside}
+            dropdown={true}
+            item={{
+              id: id,
+              nombre: nombre,
+              img_path: imagen,
+              media_type: mediaType,
+            }}
+          />
         </header>
         {children}
       </div>
