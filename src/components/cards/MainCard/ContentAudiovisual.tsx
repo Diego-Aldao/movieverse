@@ -1,7 +1,6 @@
 import React from "react";
-import generosPeliculas from "@/generos.json";
-import generosTV from "@/generosTV.json";
 import { numberToFixed } from "@/utils/fixedNumbers";
+import { GENEROS_PELICULAS, GENEROS_SERIES } from "@/constants/constants";
 
 interface Props {
   nombre?: string;
@@ -18,7 +17,8 @@ export default function ContentAudiovisual({
   mediaType,
   voteCount,
 }: Props) {
-  const listadoGeneros = mediaType === "movie" ? generosPeliculas : generosTV;
+  const listadoGeneros =
+    mediaType === "movie" ? GENEROS_PELICULAS : GENEROS_SERIES;
   const currentGeneros = listadoGeneros.filter((genero) => {
     return generos?.includes(genero.id);
   });

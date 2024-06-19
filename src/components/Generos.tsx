@@ -1,6 +1,5 @@
+import { GENEROS_PELICULAS, GENEROS_SERIES } from "@/constants/constants";
 import React from "react";
-import generosTV from "@/generosTV.json";
-import generosPeliculas from "@/generos.json";
 
 interface Props {
   tipo: string;
@@ -17,7 +16,7 @@ export default function Generos({
   stylesLista,
   cantidad,
 }: Props) {
-  const currentGeneros = tipo === "tv" ? generosTV : generosPeliculas;
+  const currentGeneros = tipo === "tv" ? GENEROS_SERIES : GENEROS_PELICULAS;
   const generosFiltrados = currentGeneros
     .filter((genero) => {
       return listaGenerosNumericos.includes(genero.id);

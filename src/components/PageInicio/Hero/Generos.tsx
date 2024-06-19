@@ -1,7 +1,7 @@
 import React from "react";
-import listadoGeneros from "@/generos.json";
 import { useInView } from "react-intersection-observer";
 import MainTag from "@/components/tags/MainTag";
+import { GENEROS_PELICULAS } from "@/constants/constants";
 
 interface Props {
   generos: number[] | undefined;
@@ -12,7 +12,7 @@ export default function Generos({ generos }: Props) {
     threshold: 0,
     rootMargin: "-50px -150px -50px -150px",
   });
-  const currentGeneros = listadoGeneros.filter((genero) => {
+  const currentGeneros = GENEROS_PELICULAS.filter((genero) => {
     return generos?.includes(genero.id);
   });
   return (
