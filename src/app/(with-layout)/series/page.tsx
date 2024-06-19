@@ -6,14 +6,16 @@ import ContenidoPrincipal from "@/components/containers/SecondaryPages/Contenido
 import MainSection from "@/components/containers/SecondaryPages/MainSection";
 import { BASE_URL_DISCOVER_SERIES } from "@/constants/constants";
 import ContentAudiovisual from "@/components/cards/MainCard/ContentAudiovisual";
-import FetchDataClient from "@/data/fetchDataClient";
+import FetchDataClient from "@/services/fetchDataClient";
 import type { Serie, Series } from "@/types/fetchTypes";
 import SkeletonMainCard from "@/components/skeletons/cards/SkeletonMainCard";
 import NoData from "@/components/errors/NoData";
 import { useInView } from "react-intersection-observer";
+import getMonthPlusSix from "@/utils/getMonthPlusSix";
 
 export default function Series() {
-  const initialURL = `${BASE_URL_DISCOVER_SERIES}&page=1&sort_by=popularity_desc`;
+  const fechaMaxima = getMonthPlusSix();
+  const initialURL = `${BASE_URL_DISCOVER_SERIES}page=1&sort_by=popularity.desc&primary_release_date.lte=${fechaMaxima}&vote_average.gte=0&vote_average.lte=10&vote_count.gte=0&with_runtime.gte=0&with_runtime.lte=360`;
   const [urlFetch, setUrlFetch] = useState<string>(initialURL);
   const { data: series, loading } = FetchDataClient<Series>(urlFetch);
   const [pageNumber, setPageNumber] = useState<number>(1);

@@ -5,15 +5,18 @@ import ContenidoPrincipal from "@/components/containers/SecondaryPages/Contenido
 import MainSection from "@/components/containers/SecondaryPages/MainSection";
 import { BASE_URL_DISCOVER_MOVIE } from "@/constants/constants";
 import type { Pelicula, Peliculas } from "@/types/fetchTypes";
-import FetchDataClient from "@/data/fetchDataClient";
+import FetchDataClient from "@/services/fetchDataClient";
 import SkeletonMainCard from "@/components/skeletons/cards/SkeletonMainCard";
 import MainCard from "@/components/cards/MainCard/MainCard";
 import ContentAudiovisual from "@/components/cards/MainCard/ContentAudiovisual";
 import { useInView } from "react-intersection-observer";
 import NoData from "@/components/errors/NoData";
+import getMonthPlusSix from "@/utils/getMonthPlusSix";
 
 export default function Peliculas() {
-  const initialURL = `${BASE_URL_DISCOVER_MOVIE}&page=1&sort_by=popularity_desc`;
+  const fechaMaxima = getMonthPlusSix();
+
+  const initialURL = `${BASE_URL_DISCOVER_MOVIE}page=1&sort_by=popularity.desc&primary_release_date.lte=${fechaMaxima}&vote_average.gte=0&vote_average.lte=10&vote_count.gte=0&with_runtime.gte=0&with_runtime.lte=360`;
   const [urlFetch, setUrlFetch] = useState<string>(initialURL);
   const { data: peliculas, loading } = FetchDataClient<Peliculas>(urlFetch);
   const [pageNumber, setPageNumber] = useState<number>(1);
