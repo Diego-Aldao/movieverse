@@ -1,6 +1,6 @@
 import { BASE_URL_SERIE_DETAIL } from "@/constants/constants";
 import { DetalleSeries } from "@/types/fetchTypes";
-import React from "react";
+import React, { Suspense } from "react";
 import Hero from "@/components/PageID/SeriesYPeliculas/Hero/Hero";
 import Reparto from "@/components/PageID/SeriesYPeliculas/Reparto/Reparto";
 import Media from "@/components/PageID/SeriesYPeliculas/Media/Media";
@@ -10,7 +10,8 @@ import Similares from "@/components/PageID/SeriesYPeliculas/Similares/Similares"
 import ImagenesHero from "@/components/PageID/SeriesYPeliculas/Hero/ImagenesHero";
 import HeaderHero from "@/components/PageID/SeriesYPeliculas/Hero/HeaderHero";
 import MainInfoHero from "@/components/PageID/SeriesYPeliculas/Hero/MainInfoHero";
-import fetchData from "@/data/fetchData";
+import fetchData from "@/services/fetchData";
+import SkeletonRedes from "@/components/skeletons/PagePeliculasSeries/SkeletonRedes";
 
 export default async function SeriesID({ params }: { params: { id: string } }) {
   const { id } = params;
@@ -55,7 +56,9 @@ export default async function SeriesID({ params }: { params: { id: string } }) {
         />
         <Similares similares={serie.similar} mediaType={"tv"} />
         <aside className="lg:row-start-1 lg:col-start-2 flex flex-col gap-8">
-          <Redes id={id} />
+          <Suspense fallback={<SkeletonRedes />}>
+            <Redes id={id} />
+          </Suspense>
           <SubInfo
             tituloOriginal={serie.original_name}
             estado={serie.status}
