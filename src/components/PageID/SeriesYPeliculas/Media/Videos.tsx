@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import type { Videos } from "@/types/fetchTypes";
-import { BASE_URL_MOVIE_DETAIL } from "@/constants/constants";
 import FetchDataClient from "@/data/fetchDataClient";
 import SkeletonVideos from "@/components/skeletons/PagePeliculasSeries/SkeletonVideos";
 import { MiniaturaMedia } from "@/types/localTypes";
 
 interface Props {
   id: string | string[];
+  baseUrl: string;
 }
 
-export default function Videos({ id }: Props) {
+export default function Videos({ id, baseUrl }: Props) {
   const { data: videos, loading } = FetchDataClient<Videos>(
-    `${BASE_URL_MOVIE_DETAIL}${id}/videos`
+    `${baseUrl}${id}/videos`
   );
 
   const [currentMiniaturas, setCurrentMiniaturas] = useState<
@@ -25,7 +25,7 @@ export default function Videos({ id }: Props) {
 
   useEffect(() => {
     if (!videos) return;
-    const miniaturas: MiniaturaMedia[] = videos?.results
+    const miniaturas: MiniaturaMedia[] = videos.results
       .slice(0, 12)
       .map((video) => {
         return {
@@ -85,7 +85,7 @@ export default function Videos({ id }: Props) {
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="w-full h-full object-cover md:hidden"
+                className="md:hidden"
               />
               <Image
                 src={currentVideo.imagenGrande}
@@ -93,7 +93,7 @@ export default function Videos({ id }: Props) {
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="w-full h-full object-cover hidden md:inline-block"
+                className="hidden md:inline-block"
               />
             </div>
           </div>
@@ -117,7 +117,6 @@ export default function Videos({ id }: Props) {
                   width={0}
                   height={0}
                   sizes="100vw"
-                  className="w-full h-full object-cover"
                 />
               </div>
             ))}
