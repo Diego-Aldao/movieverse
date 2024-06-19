@@ -1,5 +1,5 @@
 import MainCard from "@/components/cards/MainCard/MainCard";
-import fetchData from "@/data/fetchData";
+import fetchData from "@/services/fetchData";
 import type { Celebridad, Celebridades } from "@/types/fetchTypes";
 import React from "react";
 import { BASE_URL_POPULAR_PEOPLE } from "@/constants/constants";

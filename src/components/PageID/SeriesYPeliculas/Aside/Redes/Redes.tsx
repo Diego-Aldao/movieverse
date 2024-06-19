@@ -4,7 +4,7 @@ import { RedesSociales } from "@/types/localTypes";
 import filterRedesSociales from "@/utils/filterRedesSociales";
 import { BASE_URL_MOVIE_DETAIL } from "@/constants/constants";
 import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomSection";
-import fetchData from "@/data/fetchData";
+import fetchData from "@/services/fetchData";
 
 interface Props {
   id: string | string[];

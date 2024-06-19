@@ -8,7 +8,7 @@ import {
 import { Serie, Series } from "@/types/fetchTypes";
 import HorizontalCard from "@/components/cards/HorizontalCard";
 import MiniCard from "@/components/cards/MiniCard";
-import FetchDataClient from "@/data/fetchDataClient";
+import FetchDataClient from "@/services/fetchDataClient";
 import SkeletonMejoresSeries from "@/components/skeletons/PageInicio/SkeletonMejoresSeries";
 import useSize from "@/hooks/useSize";
 

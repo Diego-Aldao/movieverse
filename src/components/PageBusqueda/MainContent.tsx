@@ -1,6 +1,6 @@
 "use client";
 import { BASE_URL_BUSQUEDA } from "@/constants/constants";
-import FetchDataClient from "@/data/fetchDataClient";
+import FetchDataClient from "@/services/fetchDataClient";
 import { Busqueda, SearchResults } from "@/types/fetchTypes";
 import { getResultadosAgrupados } from "@/utils/getResultadosAgrupados";
 import React, { useEffect, useState } from "react";

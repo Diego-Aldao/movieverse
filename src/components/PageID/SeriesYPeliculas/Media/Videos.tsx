@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import type { Videos } from "@/types/fetchTypes";
-import FetchDataClient from "@/data/fetchDataClient";
+import FetchDataClient from "@/services/fetchDataClient";
 import SkeletonVideos from "@/components/skeletons/PagePeliculasSeries/SkeletonVideos";
 import { MiniaturaMedia } from "@/types/localTypes";
 

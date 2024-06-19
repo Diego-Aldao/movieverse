@@ -1,7 +1,7 @@
 import React from "react";
 import { BASE_URL_PERSON_DETAIL } from "@/constants/constants";
 import { DetalleCelebridad } from "@/types/fetchTypes";
-import fetchData from "@/data/fetchData";
+import fetchData from "@/services/fetchData";
 import Hero from "@/components/PageID/Celebridades/Hero";
 import MainInfo from "@/components/PageID/Celebridades/Aside/MainInfo";
 import Redes from "@/components/PageID/Celebridades/Aside/Redes";

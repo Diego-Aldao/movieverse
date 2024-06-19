@@ -5,7 +5,7 @@ import { Estrenos } from "@/types/fetchTypes";
 import Generos from "./Generos";
 import Slide from "./Slide";
 import SkeletonHero from "@/components/skeletons/PageInicio/SkeletonHero";
-import FetchDataClient from "@/data/fetchDataClient";
+import FetchDataClient from "@/services/fetchDataClient";
 import { BASE_URL_ESTRENOS } from "@/constants/constants";
 
 //Swiper React components

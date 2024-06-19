@@ -10,7 +10,7 @@ import Similares from "@/components/PageID/SeriesYPeliculas/Similares/Similares"
 import ImagenesHero from "@/components/PageID/SeriesYPeliculas/Hero/ImagenesHero";
 import HeaderHero from "@/components/PageID/SeriesYPeliculas/Hero/HeaderHero";
 import MainInfoHero from "@/components/PageID/SeriesYPeliculas/Hero/MainInfoHero";
-import fetchData from "@/data/fetchData";
+import fetchData from "@/services/fetchData";
 import { Suspense } from "react";
 import SkeletonRedes from "@/components/skeletons/PagePeliculasSeries/SkeletonRedes";
 import ScrollToTop from "@/components/ScrollToTop";

@@ -5,7 +5,7 @@ import MainCard from "@/components/cards/MainCard/MainCard";
 import ContentCelebridad from "@/components/cards/MainCard/ContentCelebridad";
 import { BASE_URL_POPULAR_PEOPLE } from "@/constants/constants";
 import type { Celebridad, Celebridades } from "@/types/fetchTypes";
-import FetchDataClient from "@/data/fetchDataClient";
+import FetchDataClient from "@/services/fetchDataClient";
 import SkeletonMainCard from "@/components/skeletons/cards/SkeletonMainCard";
 import { useInView } from "react-intersection-observer";
 
