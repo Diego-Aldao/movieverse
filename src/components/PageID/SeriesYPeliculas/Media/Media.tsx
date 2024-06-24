@@ -4,7 +4,7 @@ import MediaContent from "./MediaContent";
 import Videos from "./Videos";
 import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomSection";
 import Filtros from "./Filtros";
-import FetchDataClient from "@/data/fetchDataClient";
+import FetchDataClient from "@/services/fetchDataClient";
 import {
   BASE_URL_MOVIE_DETAIL,
   BASE_URL_SERIE_DETAIL,
@@ -37,11 +37,11 @@ export default function NewMedia({ id, idiomaOriginal, mediaType }: Props) {
 
   return (
     <>
-      {loading && <SkeletonMedia />}
+      {loading && <SkeletonMedia mediaType={currentMedia} />}
       {imagenes && imagenesMedia.length >= 1 && (
         <CustomSection
           titulo="media"
-          customStyles="lg-col-start-1"
+          customStyles="lg:col-start-1"
           headerChildren={
             <Filtros
               setCurrentMedia={setCurrentMedia}
