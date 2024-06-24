@@ -21,7 +21,9 @@ export default function MainInfoHero({
     <div className="sub-info flex items-center gap-4 flex-wrap">
       <MainTag>{getYearFromDate(estreno)}</MainTag>
       {duracion && <MainTag>{getDurationFromMinutes(duracion)}</MainTag>}
-      {edadMinima && <MainTag>{edadMinima.rating}</MainTag>}
+      {edadMinima && (
+        <MainTag>apto para mayores de {edadMinima.rating}</MainTag>
+      )}
       {estreno && generos.length >= 1 && (
         <span className="hidden sm:inline-block h-[2px] w-[2px] rounded-full bg-secondary-white"></span>
       )}
