@@ -1,9 +1,16 @@
-import Coleccion from "@/components/PagePerfil/Coleccion";
 import Image from "next/image";
 import React from "react";
 import banner from "@/assets/banner.png";
 import profile from "@/assets/perfil.webp";
 import NoData from "@/components/errors/NoData";
+import dynamic from "next/dynamic";
+
+const DynamicColeccion = dynamic(
+  () => import("@/components/PagePerfil/Coleccion"),
+  {
+    ssr: false,
+  }
+);
 
 export default function Perfil() {
   return (
@@ -53,7 +60,7 @@ export default function Perfil() {
         </div>
       </header>
       <section className="section px-4 md:px-8 lg:px-10 max-w-7xl 2xl:px-0 mx-auto grid gap-8 lg:grid-cols-[70%,1fr] lg:gap-4 pb-10">
-        <Coleccion />
+        <DynamicColeccion />
         <aside>
           <div>
             <header className="flex flex-col gap-4 md:gap-8">
