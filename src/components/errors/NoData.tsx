@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -17,7 +16,7 @@ export default function NoData({ children, nombre, customStyles }: Props) {
         inView ? "opacity-100 top-0" : "opacity-0 top-10"
       } ${customStyles}`}
     >
-      <span className="first-letter:uppercase text-center w-fit text-xl md:text-2xl inline-block line-clamp-1 text-inherit">
+      <span className="first-letter:uppercase text-center w-fit text-xl md:text-2xl inline-block line-clamp-1 ">
         {nombre}
       </span>
       {children}

@@ -1,5 +1,6 @@
 import React from "react";
 import { numberToFixed } from "@/utils/fixedNumbers";
+import UserInteraction from "@/components/cards/UserInteraction";
 
 interface Props {
   votoPromedio: number;
@@ -33,6 +34,14 @@ export default function HeaderHero({
             sin calificar
           </span>
         )}
+        <UserInteraction
+          item={{
+            id: id,
+            nombre: titulo,
+            img_path: poster,
+            media_type: media_type,
+          }}
+        />
       </div>
 
       <h1

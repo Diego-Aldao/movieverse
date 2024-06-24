@@ -5,6 +5,7 @@ import Generos from "../Generos";
 import { numberToFixed } from "@/utils/fixedNumbers";
 import { Serie } from "@/types/fetchTypes";
 import MainButton from "../buttons/MainButton";
+import UserInteraction from "./UserInteraction";
 import MainTag from "../tags/MainTag";
 
 interface Props {
@@ -53,6 +54,14 @@ export default function HorizontalCard({ item }: Props) {
               <h2 className="text-xl line-clamp-1 md:text-3xl xl:text-4xl pb-1">
                 {item.name}
               </h2>
+              <UserInteraction
+                item={{
+                  id: item.id,
+                  nombre: item.name,
+                  img_path: item.poster_path || "",
+                  media_type: "tv",
+                }}
+              />
             </header>
             <Generos
               tipo="tv"

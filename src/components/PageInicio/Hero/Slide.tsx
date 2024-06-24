@@ -1,4 +1,5 @@
 import MainButton from "@/components/buttons/MainButton";
+import UserInteraction from "@/components/cards/UserInteraction";
 import { numberToFixed } from "@/utils/fixedNumbers";
 import React from "react";
 import { useInView } from "react-intersection-observer";
@@ -51,6 +52,14 @@ export default function Slide({
                   {numberToFixed(votoPromedio)}
                 </span>
               </div>
+              <UserInteraction
+                item={{
+                  id: id,
+                  nombre: titulo,
+                  img_path: poster,
+                  media_type: "movie",
+                }}
+              />
             </div>
 
             <h1
