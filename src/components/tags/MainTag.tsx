@@ -8,7 +8,7 @@ interface Props {
 export default function MainTag({ children, customStyles }: Props) {
   return (
     <span
-      className={`capitalize px-3 py-1 text-xs bg-[#2425267e] border-main-white border-opacity-10 border rounded-full md:px-4 md:text-sm ${customStyles}`}
+      className={`first-letter:uppercase px-3 py-1 text-xs bg-main-black/35 backdrop-blur-sm rounded-full md:px-4 md:text-sm h-fit w-fit ${customStyles}`}
     >
       {children}
     </span>
