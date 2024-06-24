@@ -1,5 +1,10 @@
-import { estadosPeliculas } from "@/utils/traducciones";
+import {
+  estadosPeliculas,
+  estadosSeries,
+  tipoDeSerie as generosSeries,
+} from "@/utils/traducciones";
 import React from "react";
+import ItemSubInfo from "./ItemSubInfo";
 
 interface Props {
   tituloOriginal: string;
@@ -11,33 +16,34 @@ interface Props {
   esSerie?: boolean;
 }
 
-export default function SubInfo({
+interface PropsSerie {
+  tituloOriginal: string;
+  estado: string;
+  idiomaOriginal: string;
+  tipoDeSerie: string;
+}
+
+interface PropsPelicula {
+  tituloOriginal: string;
+  estado: string;
+  idiomaOriginal: string;
+  presupuesto?: number;
+  ingresos?: number;
+}
+
+interface SubInfo {
+  id: number;
+  nombre: string;
+  valor: string | number;
+}
+
+function SubInfoSerie({
   tituloOriginal,
   estado,
   idiomaOriginal,
-  presupuesto,
-  ingresos,
   tipoDeSerie,
-  esSerie,
-}: Props) {
-  let presupuestoFormateado;
-  let ingresosFormateado;
-
-  if (!esSerie) {
-    presupuestoFormateado = presupuesto
-      ? `$ ${new Intl.NumberFormat("es-AR").format(presupuesto)}`
-      : "-";
-
-    ingresosFormateado = ingresos
-      ? `$ ${new Intl.NumberFormat("es-AR").format(ingresos)}`
-      : "-";
-  }
-
-  const nombreLenguajes = new Intl.DisplayNames(["es"], { type: "language" });
-
-  const idiomaOriginalFormateado = nombreLenguajes.of(idiomaOriginal);
-
-  const arrayInfo = [
+}: PropsSerie) {
+  const arrayInfoSeries: SubInfo[] = [
     {
       id: 1,
       nombre: "título original",
@@ -46,13 +52,63 @@ export default function SubInfo({
     {
       id: 2,
       nombre: "estado",
-      valor: estado,
-      needTranslate: true,
+      valor: estadosSeries[estado],
     },
     {
       id: 3,
       nombre: "idioma original",
-      valor: idiomaOriginalFormateado,
+      valor: idiomaOriginal,
+    },
+    {
+      id: 4,
+      nombre: "tipo de serie",
+      valor: generosSeries[tipoDeSerie],
+    },
+  ];
+
+  return (
+    <ul className="grid sm:grid-cols-2 lg:grid-cols-1 gap-4">
+      {arrayInfoSeries.map((objeto) => (
+        <React.Fragment key={objeto.id}>
+          {objeto.valor && (
+            <ItemSubInfo nombre={objeto.nombre} valor={objeto.valor} />
+          )}
+        </React.Fragment>
+      ))}
+    </ul>
+  );
+}
+
+function SubInfoPeliculas({
+  tituloOriginal,
+  estado,
+  idiomaOriginal,
+  presupuesto,
+  ingresos,
+}: PropsPelicula) {
+  let presupuestoFormateado = presupuesto
+    ? `$ ${new Intl.NumberFormat("es-AR").format(presupuesto)}`
+    : "-";
+
+  let ingresosFormateado = ingresos
+    ? `$ ${new Intl.NumberFormat("es-AR").format(ingresos)}`
+    : "-";
+
+  const arrayInfoPeliculas: SubInfo[] = [
+    {
+      id: 1,
+      nombre: "título original",
+      valor: tituloOriginal,
+    },
+    {
+      id: 2,
+      nombre: "estado",
+      valor: estadosPeliculas[estado],
+    },
+    {
+      id: 3,
+      nombre: "idioma original",
+      valor: idiomaOriginal,
     },
     {
       id: 4,
@@ -64,29 +120,51 @@ export default function SubInfo({
       nombre: "ingresos",
       valor: ingresosFormateado,
     },
-    {
-      id: 6,
-      nombre: "tipo de serie",
-      valor: tipoDeSerie,
-    },
   ];
-
   return (
     <ul className="grid sm:grid-cols-2 lg:grid-cols-1 gap-4">
-      {arrayInfo.map((objeto) => (
-        <>
+      {arrayInfoPeliculas.map((objeto) => (
+        <React.Fragment key={objeto.id}>
           {objeto.valor && (
-            <li className="flex flex-col gap-1" key={objeto.id}>
-              <span className="capitalize">{objeto.nombre}</span>
-              <span className="capitalize text-sm text-secondary-white">
-                {objeto.needTranslate
-                  ? estadosPeliculas[objeto.valor]
-                  : objeto.valor}
-              </span>
-            </li>
+            <ItemSubInfo nombre={objeto.nombre} valor={objeto.valor} />
           )}
-        </>
+        </React.Fragment>
       ))}
     </ul>
+  );
+}
+
+export default function SubInfo({
+  tituloOriginal,
+  estado,
+  idiomaOriginal,
+  presupuesto,
+  ingresos,
+  tipoDeSerie,
+  esSerie,
+}: Props) {
+  const nombreLenguajes = new Intl.DisplayNames(["es"], { type: "language" });
+
+  const idiomaOriginalFormateado = nombreLenguajes.of(idiomaOriginal);
+
+  return (
+    <>
+      {esSerie ? (
+        <SubInfoSerie
+          tituloOriginal={tituloOriginal}
+          estado={estado}
+          idiomaOriginal={idiomaOriginalFormateado || ""}
+          tipoDeSerie={tipoDeSerie || ""}
+        />
+      ) : (
+        <SubInfoPeliculas
+          tituloOriginal={tituloOriginal}
+          estado={estado}
+          idiomaOriginal={idiomaOriginalFormateado || ""}
+          presupuesto={presupuesto}
+          ingresos={ingresos}
+        />
+      )}
+    </>
   );
 }
