@@ -4,12 +4,14 @@ import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomSection";
 
 import type { Similar } from "@/types/fetchTypes";
+import Link from "next/link";
 
 interface Props {
   similares: Similar;
+  mediaType: "movie" | "tv";
 }
 
-export default function Similares({ similares }: Props) {
+export default function Similares({ similares, mediaType }: Props) {
   const similaresFiltrados = similares.results
     .filter((similar) => similar.backdrop_path)
     .slice(0, 8);
@@ -21,7 +23,12 @@ export default function Similares({ similares }: Props) {
     >
       <div className="main-content grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-1">
         {similaresFiltrados.map((similar) => (
-          <div
+          <Link
+            href={
+              mediaType === "movie"
+                ? `/peliculas/${similar.id}`
+                : `/series/${similar.id}`
+            }
             key={similar.id}
             className="relative flex items-center justify-center after:absolute after:inset-0 after:bg-[#101010c7] rounded overflow-hidden max-h-[100px] lg:max-h-[150px]"
           >
@@ -34,9 +41,8 @@ export default function Similares({ similares }: Props) {
               width={0}
               height={0}
               sizes="100vw"
-              className="w-full h-full object-cover"
             />
-          </div>
+          </Link>
         ))}
       </div>
     </CustomSection>
