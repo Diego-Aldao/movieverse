@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import generosPeliculas from "@/generos.json";
-import generosSeries from "@/generosTV.json";
 import { FiltrosFetch } from "@/types/localTypes";
+import MainTag from "@/components/tags/MainTag";
+import { GENEROS_PELICULAS, GENEROS_SERIES } from "@/constants/constants";
 
 interface Props {
   setFiltros: React.Dispatch<React.SetStateAction<FiltrosFetch>>;
@@ -18,7 +18,7 @@ export default function Generos({
   mediaType,
 }: Props) {
   const listadoGeneros =
-    mediaType === "movie" ? generosPeliculas : generosSeries;
+    mediaType === "movie" ? GENEROS_PELICULAS : GENEROS_SERIES;
   const [currentGeneros, setCurrentGeneros] = useState<number[]>([]);
 
   useEffect(() => {
@@ -46,22 +46,28 @@ export default function Generos({
     }
   };
   return (
-    <div className="generos flex flex-col gap-2 max-w-[800px xl:w-[60%]">
-      <span className="text-sm capitalize">géneros:</span>
-      <ul className="flex flex-wrap gap-2">
+    <div className="generos flex flex-col gap-2 sm:col-span-2 lg:col-span-2">
+      <span className="text-sm capitalize">géneros</span>
+      <ul className="flex flex-wrap gap-2 xl:gap-y-3">
         {listadoGeneros.map((genero) => (
           <li
             key={genero.id}
-            className={`py-1 px-3 text-xs rounded-full capitalize transition-colors cursor-pointer hover:border-secondary-white border border-transparent ${
-              currentGeneros.includes(genero.id)
-                ? "bg-main-color text-main-black"
-                : "bg-main-black text-main-white"
-            }`}
             onClick={() => {
               handleGeneros(genero.id);
             }}
           >
-            {genero.name}
+            <MainTag
+              customStyles={`
+                ${
+                  currentGeneros.includes(genero.id)
+                    ? "!bg-main-color text-main-black hover:border-main-black/50"
+                    : "!bg-main-black text-main-white hover:border-main-white/15"
+                } md:text-xs cursor-pointer  border border-transparent shadow-sm shadow-transparent hover:shadow-main-black font-medium transition-colors
+
+                `}
+            >
+              {genero.name}
+            </MainTag>
           </li>
         ))}
       </ul>
