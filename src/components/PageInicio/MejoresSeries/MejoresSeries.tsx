@@ -10,7 +10,6 @@ import HorizontalCard from "@/components/cards/HorizontalCard";
 import MiniCard from "@/components/cards/MiniCard";
 import FetchDataClient from "@/services/fetchDataClient";
 import SkeletonMejoresSeries from "@/components/skeletons/PageInicio/SkeletonMejoresSeries";
-import useSize from "@/hooks/useSize";
 
 export default function MejoresSeries() {
   const { data: series, loading } =
@@ -18,8 +17,6 @@ export default function MejoresSeries() {
 
   const [currentSeries, setCurrentSeries] = useState<Serie[]>();
   const [detailedSerie, setDetailedSerie] = useState<Serie>();
-
-  const windowDimensions = useSize();
 
   useEffect(() => {
     if (!series) return;
@@ -60,7 +57,7 @@ export default function MejoresSeries() {
           <div className="contenedor-mini-card gap-5 w-full grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {currentSeries.slice(0, 15).map((mini) => (
               <MiniCard
-                noLink={windowDimensions.width <= 639}
+                noLink={true}
                 key={mini.id}
                 nombre={mini.name}
                 pathImagen={mini.backdrop_path}
