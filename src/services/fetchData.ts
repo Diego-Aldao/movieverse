@@ -7,13 +7,7 @@ const options = {
 };
 
 export default async function fetchData<T>(url: string) {
-  try {
-    const response = await fetch(url, options);
-    if (response) {
-      const data: T = await response.json();
-      return data;
-    }
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await fetch(url, options);
+  const data: T = await response.json();
+  return data;
 }
