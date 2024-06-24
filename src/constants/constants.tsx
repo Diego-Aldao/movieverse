@@ -1,5 +1,6 @@
-import { FiltroPerfil } from "@/types/localTypes";
+import { FiltroPerfil, Genero } from "@/types/localTypes";
 
+//URLS Y PARAMETROS PARA FETCHEAR DATA
 export const BASE_URL_ESTRENOS =
   "https://api.themoviedb.org/3/movie/now_playing?language=es-MX";
 
@@ -35,6 +36,155 @@ export const TAMAÑOS_IMAGENES = {
   original: "original",
 };
 
+//LISTADO DE GENEROS DE PELICULAS Y SERIES
+
+export const GENEROS_PELICULAS: Genero[] = [
+  {
+    id: 28,
+    name: "Acción",
+  },
+  {
+    id: 12,
+    name: "Aventura",
+  },
+  {
+    id: 16,
+    name: "Animación",
+  },
+  {
+    id: 35,
+    name: "Comedia",
+  },
+  {
+    id: 80,
+    name: "Crimen",
+  },
+  {
+    id: 99,
+    name: "Documental",
+  },
+  {
+    id: 18,
+    name: "Drama",
+  },
+  {
+    id: 10751,
+    name: "Familia",
+  },
+  {
+    id: 14,
+    name: "Fantasía",
+  },
+  {
+    id: 36,
+    name: "Historia",
+  },
+  {
+    id: 27,
+    name: "Terror",
+  },
+  {
+    id: 10402,
+    name: "Música",
+  },
+  {
+    id: 9648,
+    name: "Misterio",
+  },
+  {
+    id: 10749,
+    name: "Romance",
+  },
+  {
+    id: 878,
+    name: "Ciencia ficción",
+  },
+  {
+    id: 10770,
+    name: "Película de TV",
+  },
+  {
+    id: 53,
+    name: "Suspenso",
+  },
+  {
+    id: 10752,
+    name: "Bélica",
+  },
+  {
+    id: 37,
+    name: "Western",
+  },
+];
+
+export const GENEROS_SERIES: Genero[] = [
+  {
+    id: 10759,
+    name: "Acción y Aventura",
+  },
+  {
+    id: 16,
+    name: "Animación",
+  },
+  {
+    id: 35,
+    name: "Comedia",
+  },
+  {
+    id: 80,
+    name: "Crimen",
+  },
+  {
+    id: 99,
+    name: "Documental",
+  },
+  {
+    id: 18,
+    name: "Drama",
+  },
+  {
+    id: 10751,
+    name: "Familia",
+  },
+  {
+    id: 10762,
+    name: "Niños",
+  },
+  {
+    id: 9648,
+    name: "Misterio",
+  },
+  {
+    id: 10763,
+    name: "Noticias",
+  },
+  {
+    id: 10764,
+    name: "Reality",
+  },
+  {
+    id: 10765,
+    name: "Sci-Fi & Fantasía",
+  },
+  {
+    id: 10766,
+    name: "Telenovela",
+  },
+  {
+    id: 10767,
+    name: "Talkshow",
+  },
+  {
+    id: 10768,
+    name: "Guerra y Política",
+  },
+  {
+    id: 37,
+    name: "Western",
+  },
+];
+
+//FILTROS PARA LAS PAGINAS PELICULAS Y SERIES
 export const PROPIEDADES_FILTRO_ORDEN = [
   {
     id: 1,
@@ -193,5 +343,29 @@ export const TYPE_FILTERS_LIST_PROFILE_PAGE: FiltroPerfil[] = [
     id: 4,
     nombre: "celebridades",
     valor: "person",
+  },
+];
+
+//NAVEGACION INTERNA
+export const INTERNAL_NAVIGATION = [
+  {
+    id: 1,
+    nombre: "inicio",
+    destino: "/",
+  },
+  {
+    id: 2,
+    nombre: "peliculas",
+    destino: "/peliculas",
+  },
+  {
+    id: 3,
+    nombre: "series de television",
+    destino: "/series",
+  },
+  {
+    id: 4,
+    nombre: "celebridades",
+    destino: "/celebridades",
   },
 ];
