@@ -14,21 +14,19 @@ import Ranges from "./Ranges";
 import Dates from "./Dates";
 import Botones from "./Botones";
 import MainTag from "@/components/tags/MainTag";
-
-const fechaActual = new Date();
-const fechaFinal = new Date(fechaActual.setMonth(fechaActual.getMonth() + 6))
-  .toISOString()
-  .split("T")[0];
+import getMonthPlusSix from "@/utils/getMonthPlusSix";
 
 interface Props {
   setUrlFetch: React.Dispatch<React.SetStateAction<string>>;
   pageNumber: number;
   mediaType: "movie" | "tv";
 }
+
+const fechaMaxima = getMonthPlusSix();
 const initialFiltros: FiltrosFetch = {
   page: 1,
   sort_by: "popularity.desc",
-  "primary_release_date.lte": fechaFinal,
+  "primary_release_date.lte": fechaMaxima,
   "vote_average.gte": 0,
   "vote_average.lte": 10,
   "vote_count.gte": 0,
