@@ -19,9 +19,11 @@ interface Props {
 }
 
 interface PropsCardInteractiva
-  extends Pick<Props, "pathImagen" | "nombre" | "id" | "customStyles"> {
+  extends Pick<
+    Props,
+    "pathImagen" | "nombre" | "id" | "customStyles" | "noLink"
+  > {
   handleClick: (id: number) => void;
-  noLink: boolean;
 } //este componente necesita que las props handleClick y noLink sean siempre true, por eso las volvi a crear sin el ? de las props principales
 
 interface PropsCardSimple
@@ -156,7 +158,7 @@ export default function MiniCard({
     </MiniCardSimple>
   ) : (
     <>
-      {handleClick && noLink && (
+      {handleClick && (
         <MiniCardInteractiva
           handleClick={handleClick}
           nombre={nombre}
