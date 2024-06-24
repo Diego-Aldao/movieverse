@@ -5,12 +5,13 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 
 interface Props {
-  votoPromedio?: number;
-  titulo?: string;
+  votoPromedio: number;
+  titulo: string;
   generos: React.ReactNode;
-  descripcion?: string;
+  descripcion: string;
   children: React.ReactNode;
-  id?: number;
+  id: number;
+  poster: string;
 }
 
 export default function Slide({
@@ -20,6 +21,7 @@ export default function Slide({
   descripcion,
   id,
   children,
+  poster,
 }: Props) {
   const [ref, inView] = useInView({
     threshold: 0,
@@ -29,18 +31,17 @@ export default function Slide({
     threshold: 0,
     rootMargin: "-50px -150px -50px -150px",
   });
-  const [ref3, inView3] = useInView({ threshold: 0 });
 
   return (
     <div className="slide bg-secondary-black  w-full h-full px-4 md:px-8 lg:px-10 ">
       <div className="contenido-slide z-[2] relative flex flex-col justify-end w-full h-full max-w-7xl mx-auto cursor-default">
         <div
           data-swiper-parallax="-55%"
-          className="about flex flex-col w-full h-fit mb-28 gap-4 "
+          className="about flex flex-col w-full h-fit mb-28 gap-4"
         >
           <header
             ref={ref}
-            className={`flex flex-col gap-2 justify-center w-fit relative transition-all  ${
+            className={`flex flex-col gap-2 justify-center w-fit relative transition-all ${
               inView ? "opacity-100 top-0" : "top-4 opacity-0"
             }`}
           >
@@ -51,7 +52,14 @@ export default function Slide({
                   {numberToFixed(votoPromedio)}
                 </span>
               </div>
-              <UserInteraction />
+              <UserInteraction
+                item={{
+                  id: id,
+                  nombre: titulo,
+                  img_path: poster,
+                  media_type: "movie",
+                }}
+              />
             </div>
 
             <h1
