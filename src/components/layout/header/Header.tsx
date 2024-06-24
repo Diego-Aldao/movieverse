@@ -13,10 +13,14 @@ export default function Header() {
         <div className="xl:flex-1">
           <Logo sloganOn={true} />
         </div>
-        <ul className="nav-desktop hidden md:flex items-center gap-12 xl:flex-1">
+        <ul className="nav-desktop hidden md:flex items-center gap-8 lg:gap-12 xl:flex-1">
           {INTERNAL_NAVIGATION.slice(1, 4).map((item) => (
             <li key={item.id}>
-              <SecondaryButton destino={item.destino} nombre={item.nombre} />
+              <SecondaryButton
+                customStyles="text-sm lg:text-base"
+                destino={item.destino}
+                nombre={item.nombre}
+              />
             </li>
           ))}
         </ul>
