@@ -271,6 +271,21 @@ export interface Result {
   first_air_date?: string;
   name?: string;
 }
+export interface ImagenesMedia {
+  backdrops: ImagenMedia[];
+  id: number;
+  logos: ImagenMedia[];
+  posters: ImagenMedia[];
+}
+export interface ImagenMedia {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1: string | null;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+}
 
 //PAGINA DETALLE CELEBRIDAD
 export interface DetalleCelebridad {
@@ -491,15 +506,6 @@ export interface ExternalIDsSeries {
 export interface Genre {
   id: number;
   name: string;
-}
-export interface ImagenMedia {
-  aspect_ratio: number;
-  height: number;
-  iso_639_1: string | null;
-  file_path: string;
-  vote_average: number;
-  vote_count: number;
-  width: number;
 }
 export interface ImagesSeries {
   backdrops: any[] | ImagenMedia[];
