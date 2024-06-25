@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import type { Videos } from "@/types/fetchTypes";
 import FetchDataClient from "@/services/fetchDataClient";
 import SkeletonVideos from "@/components/skeletons/PagePeliculasSeries/SkeletonVideos";
 import { MiniaturaMedia } from "@/types/localTypes";
+import CustomImage from "@/components/CustomImage";
+import errorImage from "@/assets/errorImagebackdrop.webp";
 
 interface Props {
   id: string | string[];
@@ -73,27 +74,23 @@ export default function Videos({ id, baseUrl }: Props) {
                 </div>
               )}
               <button
-                className="btn-play bg-[#101010a2] absolute px-5 py-1 text-xs rounded-full border border-secondary-white text-main-white uppercase flex gap-2 items-center md:text-base"
+                className="btn-play bg-[#101010a2] z-[2] absolute px-5 py-1 text-xs rounded-full border border-secondary-white text-main-white uppercase flex gap-2 items-center md:text-base"
                 onClick={handleToggle}
               >
                 <span>ver video</span>
                 <span className="icon-[mdi--play-circle-outline] w-4 h-4 md:w-8 md:h-8"></span>
               </button>
-              <Image
+              <CustomImage
                 src={currentVideo.imagenPequeña}
                 alt={currentVideo.key}
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="md:hidden"
+                customClases="md:hidden"
+                errorImage={errorImage}
               />
-              <Image
+              <CustomImage
                 src={currentVideo.imagenGrande}
                 alt={currentVideo.key}
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="hidden md:inline-block"
+                customClases="hidden md:inline-block"
+                errorImage={errorImage}
               />
             </div>
           </div>
@@ -111,12 +108,10 @@ export default function Videos({ id, baseUrl }: Props) {
                     : "border-transparent after:opacity-50"
                 }`}
               >
-                <Image
+                <CustomImage
                   src={miniatura.imagenPequeña}
                   alt=""
-                  width={0}
-                  height={0}
-                  sizes="100vw"
+                  errorImage={errorImage}
                 />
               </div>
             ))}

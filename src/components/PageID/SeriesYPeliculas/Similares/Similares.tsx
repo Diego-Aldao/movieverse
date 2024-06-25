@@ -1,10 +1,10 @@
 import React from "react";
-import Image from "next/image";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomSection";
-
+import errorImage from "@/assets/errorImageBackdropPequeño.webp";
 import type { Similar } from "@/types/fetchTypes";
 import Link from "next/link";
+import CustomImage from "@/components/CustomImage";
 
 interface Props {
   similares: Similar;
@@ -30,17 +30,16 @@ export default function Similares({ similares, mediaType }: Props) {
                 : `/series/${similar.id}`
             }
             key={similar.id}
-            className="relative flex items-center justify-center after:absolute after:inset-0 after:bg-[#101010c7] rounded overflow-hidden max-h-[100px] lg:max-h-[150px]"
+            className="relative flex items-center justify-center after:absolute after:inset-0 after:bg-main-black/75 rounded overflow-hidden max-h-[100px] lg:max-h-[150px]"
           >
             <span className="absolute font-semibold z-[2] text-xs md:text-sm w-full text-center line-clamp-1 px-2 lg:text-base xl:text-lg">
               {"name" in similar ? similar.name : similar.title}
             </span>
-            <Image
+            <CustomImage
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${similar.backdrop_path}`}
               alt=""
-              width={0}
-              height={0}
-              sizes="100vw"
+              errorImage={errorImage}
+              triggerOnce={true}
             />
           </Link>
         ))}
