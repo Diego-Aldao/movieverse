@@ -1,10 +1,11 @@
 "use client";
-import Image from "next/image";
 import React, { ReactNode } from "react";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import MainButton from "../buttons/MainButton";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
+import CustomImage from "../CustomImage";
+import errorImage from "@/assets/errorImageBackdropPequeño.webp";
 
 interface Props {
   pathImagen?: string;
@@ -51,12 +52,11 @@ function MiniCardInteractiva({
             inView ? "opacity-100 top-0" : "opacity-0 top-4"
           }`}
         >
-          <Image
+          <CustomImage
             src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
             alt="bg-imagen"
-            width={0}
-            height={0}
-            sizes="100vw"
+            errorImage={errorImage}
+            triggerOnce={true}
           />
           <h2 className="text-xl line-clamp-1 sm:text-lg md:text-xl absolute left-2 top-2 z-[2]">
             {nombre}
@@ -79,12 +79,11 @@ function MiniCardInteractiva({
             inView ? "opacity-100 top-0" : "opacity-0 top-4"
           }`}
         >
-          <Image
+          <CustomImage
             src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
             alt="bg-imagen"
-            width={0}
-            height={0}
-            sizes="100vw"
+            errorImage={errorImage}
+            triggerOnce={true}
           />
           <h2 className="text-xl line-clamp-1 sm:text-lg md:text-xl absolute z-[2] text-center px-2">
             {nombre}
@@ -111,12 +110,11 @@ function MiniCardSimple({
         inView ? "opacity-100 top-0" : "opacity-0 top-4"
       }`}
     >
-      <Image
+      <CustomImage
         src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
         alt="bg-imagen"
-        width={0}
-        height={0}
-        sizes="100vw"
+        errorImage={errorImage}
+        triggerOnce={true}
       />
       <div className="flex flex-col gap-2 absolute left-2 top-2 z-[2]">
         <h2 className="text-xl line-clamp-1 sm:text-lg md:text-xl ">

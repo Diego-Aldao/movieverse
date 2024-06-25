@@ -48,3 +48,10 @@ export interface Genero {
   id: number;
   name: string;
 }
+
+//TYPES PARA LOS ITEMS DE LA PAGINA BUSQUEDA
+export interface ItemLista {
+  id: number;
+  nombre: string;
+  destino: string;
+}

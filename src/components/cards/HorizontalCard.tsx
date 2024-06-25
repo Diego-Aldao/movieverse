@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import Generos from "../Generos";
@@ -7,6 +6,9 @@ import { Serie } from "@/types/fetchTypes";
 import MainButton from "../buttons/MainButton";
 import UserInteraction from "./UserInteraction";
 import MainTag from "../tags/MainTag";
+import CustomImage from "../CustomImage";
+import errorImagePoster from "@/assets/errorImagePoster.webp";
+import errorImageBackdrop from "@/assets/errorImagebackdrop.webp";
 
 interface Props {
   item: Serie;
@@ -15,38 +17,40 @@ interface Props {
 export default function HorizontalCard({ item }: Props) {
   return (
     <div className="z-[2] max-w-[550px] md:max-w-[700px] xl:max-w-[900px] w-full  rounded-md overflow-hidden after:inset-0 after:absolute relative after:bg-gradient-to-r after:from-secondary-black after:via-[#242526b7]  after:overflow-hidden after:to-transparent min-h-[200px] h-[250px] md:h-[300px] xl:h-[370px] lg:h-[300px]">
-      <Image
+      <CustomImage
         src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${item.backdrop_path}`}
         alt="bg-imagen"
-        width={0}
-        height={0}
-        sizes="100vw"
-        className="lg:hidden"
+        customClases="lg:hidden"
+        errorImage={errorImageBackdrop}
+        triggerOnce={false}
       />
-      <Image
+      <CustomImage
         src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.grande}${item.backdrop_path}`}
         alt="bg-imagen"
-        width={0}
-        height={0}
-        sizes="100vw"
-        className="hidden lg:block"
+        customClases="hidden lg:block"
+        errorImage={errorImageBackdrop}
+        triggerOnce={false}
       />
       <div className="absolute w-full h-full top-0 left-0 z-[2] xl:gap-4 p-4 flex flex-col gap-2 md:p-8">
         <div className="flex gap-2 xl:gap-4">
-          <div className="rounded-md overflow-hidden min-h-[105px] xl:min-h-[150] hidden md:block">
-            <Image
-              src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${item.poster_path}`}
+          <div className="rounded-md overflow-hidden h-[105px] xl:h-[150px] w-[70px] xl:w-[100px] hidden md:block">
+            <CustomImage
+              src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.posterPequeño}${item.poster_path}`}
               alt="bg-imagen"
+              customClases="xl:hidden"
+              errorImage={errorImagePoster}
               width={70}
-              height={0}
-              className="xl:hidden"
+              height={105}
+              triggerOnce={false}
             />
-            <Image
-              src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${item.poster_path}`}
+            <CustomImage
+              src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.posterPequeño}${item.poster_path}`}
               alt="bg-imagen"
+              customClases="hidden xl:block"
+              errorImage={errorImagePoster}
               width={100}
-              height={0}
-              className="hidden xl:block"
+              triggerOnce={false}
+              height={150}
             />
           </div>
           <div className="flex flex-col gap-2 xl:gap-4">

@@ -1,9 +1,10 @@
+import CustomImage from "@/components/CustomImage";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import { CombinedCredits } from "@/types/fetchTypes";
 import { ordenarParticipaciones } from "@/utils/UtilsParticipaciones";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import errorImage from "@/assets/errorImageBackdropPequeño.webp";
 
 interface Props {
   conocidoPor: string;
@@ -45,13 +46,12 @@ export default function ParticipacionesPopulares({
                 ? participacion.title
                 : participacion.name}
             </span>
-            <div className="relative after:absolute after:inset-0 after:bg-[#10101096] after:z-[1] w-full h-full rounded-md overflow-hidden">
-              <Image
+            <div className="relative after:absolute after:inset-0 after:bg-main-black/75 after:z-[1] bg-secondary-black w-full h-full rounded-md overflow-hidden">
+              <CustomImage
                 src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${participacion.backdrop_path}`}
                 alt=""
-                width={0}
-                height={0}
-                sizes="100vw"
+                errorImage={errorImage}
+                triggerOnce={true}
               />
             </div>
           </Link>

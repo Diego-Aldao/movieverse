@@ -14,12 +14,26 @@ import fetchData from "@/services/fetchData";
 import { Suspense } from "react";
 import SkeletonRedes from "@/components/skeletons/PagePeliculasSeries/SkeletonRedes";
 import ScrollToTop from "@/components/ScrollToTop";
+import { Metadata } from "next";
 
-export default async function DetallePelicula({
-  params,
-}: {
+interface Props {
   params: { id: string };
-}) {
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params;
+
+  const pelicula = await fetchData<DetallePeliculas>(
+    `${BASE_URL_MOVIE_DETAIL}${id}?append_to_response=credits%2Cexternal_ids%2Csimilar&language=es-MX`
+  );
+
+  return {
+    title: `${pelicula.title} — Movieverse`,
+    description: pelicula.overview,
+  };
+}
+
+export default async function DetallePelicula({ params }: Props) {
   const { id } = params;
   const pelicula = await fetchData<DetallePeliculas>(
     `${BASE_URL_MOVIE_DETAIL}${id}?append_to_response=credits%2Cexternal_ids%2Csimilar&language=es-MX`
@@ -54,7 +68,7 @@ export default async function DetallePelicula({
           />
         </>
       </Hero>
-      <section className="main-content px-4 md:px-8 lg:px-10 max-w-7xl mx-auto 2xl:px-0 grid w-full gap-12 lg:grid-cols-[2.5fr,1fr] lg:gap-x-4 xl:gap-x-8">
+      <section className="main-content px-4 md:px-8 lg:px-10 max-w-7xl mx-auto 2xl:px-0 pb-20 grid w-full gap-12 lg:grid-cols-[2.5fr,1fr] lg:gap-x-4 xl:gap-x-8">
         <Reparto cast={pelicula.credits.cast} />
         <Media
           id={id}

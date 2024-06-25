@@ -1,7 +1,9 @@
 "use client";
+import CustomImage from "@/components/CustomImage";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import errorImagePoster from "@/assets/errorImagePoster.webp";
+import errorImageBackdrop from "@/assets/errorImagebackdrop.webp";
 
 interface Props {
   imagenesUrls: string[];
@@ -32,21 +34,21 @@ export default function MediaContent({ imagenesUrls, tipo }: Props) {
           tipo === "posters" && "max-w-[400px] max-h-[600px]"
         }`}
       >
-        <Image
+        <CustomImage
           src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${currentImage}`}
           alt=""
-          width={0}
-          height={0}
-          sizes="100vw"
-          className=" w-full h-full md:hidden"
+          customClases=" w-full h-full md:hidden"
+          errorImage={
+            tipo === "posters" ? errorImagePoster : errorImageBackdrop
+          }
         />
-        <Image
-          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${currentImage}`}
+        <CustomImage
+          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${currentImage}`}
           alt=""
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="hidden md:inline-block"
+          customClases="hidden md:inline-block"
+          errorImage={
+            tipo === "posters" ? errorImagePoster : errorImageBackdrop
+          }
         />
       </div>
       <div
@@ -66,13 +68,13 @@ export default function MediaContent({ imagenesUrls, tipo }: Props) {
               handleClick(imagenUrl);
             }}
           >
-            <Image
+            <CustomImage
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${imagenUrl}`}
               alt=""
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="object-contain"
+              customClases="object-contain"
+              errorImage={
+                tipo === "posters" ? errorImagePoster : errorImageBackdrop
+              }
             />
           </div>
         ))}

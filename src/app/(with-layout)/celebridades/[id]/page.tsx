@@ -10,12 +10,26 @@ import Biografia from "@/components/PageID/Celebridades/MainSection/Biografia";
 import ParticipacionesPopulares from "@/components/PageID/Celebridades/MainSection/ParticipacionesPopulares";
 import TableRoles from "@/components/PageID/Celebridades/MainSection/Tablas/TableRoles";
 import TablesCrew from "@/components/PageID/Celebridades/MainSection/Tablas/TablesCrew";
+import type { Metadata } from "next";
 
-export default async function CelebridadId({
-  params,
-}: {
+type Props = {
   params: { id: string };
-}) {
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params;
+
+  const celebridad = await fetchData<DetalleCelebridad>(
+    `${BASE_URL_PERSON_DETAIL}${id}?append_to_response=external_ids%2Cimages%2Ccombined_credits&language=es-MX`
+  );
+
+  return {
+    title: `${celebridad.name} — Movieverse`,
+    description: celebridad.biography,
+  };
+}
+
+export default async function CelebridadId({ params }: Props) {
   const { id } = params;
   const celebridad = await fetchData<DetalleCelebridad>(
     `${BASE_URL_PERSON_DETAIL}${id}?append_to_response=external_ids%2Cimages%2Ccombined_credits&language=es-MX`
@@ -23,7 +37,7 @@ export default async function CelebridadId({
   return (
     <>
       <Hero imagenes={celebridad.images} />
-      <main className="sm:pt-24 lg:pt-48 grid gap-12 md:grid-cols-[250px,_1fr] lg:grid-cols-[300px,_1fr] xl:grid-cols-[350px,_1fr] md:gap-x-4 md:px-8 lg:px-10 max-w-7xl mx-auto 2xl:px-0 relative">
+      <main className="sm:pt-24 lg:pt-48 grid gap-12 md:grid-cols-[250px,_1fr] lg:grid-cols-[300px,_1fr] xl:grid-cols-[350px,_1fr] md:gap-x-4 md:px-8 lg:px-10 max-w-7xl mx-auto 2xl:px-0 relative pb-20">
         <div className="flex flex-col gap-8 sm:grid sm:grid-cols-[250px,1fr] md:flex sm:px-4 md:px-0">
           <MainInfo
             imageSrc={celebridad.profile_path}

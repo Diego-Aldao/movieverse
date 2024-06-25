@@ -1,10 +1,11 @@
 "use client";
-import Image from "next/image";
 import React, { ReactNode, useState } from "react";
 import Link from "next/link";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import { useInView } from "react-intersection-observer";
 import UserInteraction from "../UserInteraction";
+import errorImage from "@/assets/errorImagePoster.webp";
+import CustomImage from "@/components/CustomImage";
 
 interface Props {
   imagen: string;
@@ -32,7 +33,6 @@ export default function MainCard({
 
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [isMouseInside, setIsMouseInside] = useState<boolean>(false);
-
   return (
     <Link
       onMouseEnter={() => {
@@ -49,13 +49,12 @@ export default function MainCard({
           : "min-h-[65vw] sm:min-h-[44vw] md:min-h-[32vw] xl:min-h-[335px]"
       } ${inView ? "opacity-100 top-0" : "opacity-0 top-4"} `}
     >
-      <div className="imagen rounded-md h-full w-full overflow-hidden relative before:inset-[3px] md:before:inset-[4px] before:absolute before:bg-[#1010103d] before:rounded-md ">
-        <Image
-          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${imagen}`}
-          alt={`poster de la pelicula`}
-          width={0}
-          height={0}
-          sizes="100vw"
+      <div className="imagen bg-secondary-black rounded-md h-full w-full overflow-hidden relative before:inset-[3px] md:before:inset-[4px] before:absolute before:bg-[#1010103d] before:rounded-md before:z-[2]">
+        <CustomImage
+          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.posterPequeño}${imagen}`}
+          alt="poster de pelicula"
+          noAnimation={true}
+          errorImage={errorImage}
         />
       </div>
       <div className="contenido rounded-md w-full h-full absolute top-0 left-0 z-[2] after:rounded-md after:inset-[3px] md:after:inset-[4px] after:absolute after:bg-gradient-to-t after:from-[#101010] after:via-transparent after:to-transparent flex flex-col justify-between p-2 md:p-3 xl:p-4">

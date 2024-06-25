@@ -1,4 +1,4 @@
-import { FiltroPerfil, Genero } from "@/types/localTypes";
+import { FiltroPerfil, Genero, ItemLista } from "@/types/localTypes";
 
 //URLS Y PARAMETROS PARA FETCHEAR DATA
 export const BASE_URL_ESTRENOS =
@@ -30,6 +30,7 @@ export const LENGUAJE_ESP = "language=es-MX";
 export const BASE_URL_IMAGES = "https://image.tmdb.org/t/p/";
 
 export const TAMAÑOS_IMAGENES = {
+  posterPequeño: "w342",
   pequeño: "w500",
   mediano: "w780",
   grande: "w1280",
@@ -288,7 +289,7 @@ export const PROPIEDADES_FILTRO_ORDEN_SERIES = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     nombre: "titulo",
     letras: true,
     filtros: [
@@ -367,5 +368,49 @@ export const INTERNAL_NAVIGATION = [
     id: 4,
     nombre: "celebridades",
     destino: "/celebridades",
+  },
+];
+
+//ITEMS DE BUSQUEDA PARA LA PAGINA BUSQUEDA
+export const LISTADO_BUSQUEDA: ItemLista[] = [
+  {
+    id: 1,
+    nombre: "ana de armas",
+    destino: "/celebridades/224513",
+  },
+  {
+    id: 2,
+    nombre: "intensamente 2",
+    destino: "/peliculas/1022789",
+  },
+  {
+    id: 3,
+    nombre: "the boys",
+    destino: "/series/76479",
+  },
+  {
+    id: 4,
+    nombre: "keanu reeves",
+    destino: "/celebridades/6384",
+  },
+  {
+    id: 5,
+    nombre: "arcane",
+    destino: "/series/94605",
+  },
+  {
+    id: 6,
+    nombre: "interestelar",
+    destino: "/peliculas/157336",
+  },
+  {
+    id: 7,
+    nombre: "mente indomable",
+    destino: "/peliculas/489",
+  },
+  {
+    id: 8,
+    nombre: "breaking bad",
+    destino: "/series/1396",
   },
 ];

@@ -1,14 +1,20 @@
+import CustomImage from "@/components/CustomImage";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
-import Image from "next/image";
 import React from "react";
 import { useInView } from "react-intersection-observer";
+import errorImage from "@/assets/errorImagebackdrop.webp";
 
 interface Props {
   imagenPoster?: string;
   imagenBackdrop: string | null | undefined;
+  firstSlide: boolean;
 }
 
-export default function ImagenesSlide({ imagenPoster, imagenBackdrop }: Props) {
+export default function ImagenesSlide({
+  imagenPoster,
+  imagenBackdrop,
+  firstSlide,
+}: Props) {
   const [ref, inView] = useInView({ threshold: 0 });
 
   const estilosImagenes = "min-h-[830px] object-[50%,0px]";
@@ -20,77 +26,43 @@ export default function ImagenesSlide({ imagenPoster, imagenBackdrop }: Props) {
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
-      {imagenPoster ? (
-        <>
-          <Image
-            src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${imagenPoster}`}
-            alt=""
-            width={0}
-            height={0}
-            sizes="100vw"
-            className={`${estilosImagenes} md:hidden`}
-            data-swiper-parallax="75%"
-            data-swiper-parallax-scale="1.10"
-          />
-          <Image
-            src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${imagenPoster}`}
-            alt=""
-            width={0}
-            height={0}
-            sizes="100vw"
-            data-swiper-parallax="75%"
-            data-swiper-parallax-scale="1.10"
-            className={`${estilosImagenes} hidden md:inline-block lg:hidden`}
-          />
-        </>
-      ) : (
-        <Image
-          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${imagenBackdrop}`}
+      {/*custom image no puede recibir como prop data-swiper-parallax, asi que es necesario envolverlo en otro elemento, y a este pasarle las propiedades para el parallax*/}
+      <div data-swiper-parallax="75%" data-swiper-parallax-scale="1.10">
+        <CustomImage
+          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${imagenPoster}`}
           alt=""
-          width={0}
-          height={0}
-          sizes="100vw"
-          data-swiper-parallax="75%"
-          data-swiper-parallax-scale="1.10"
-          className={`${estilosImagenes}  lg:hidden`}
+          customClases={`${estilosImagenes} md:hidden`}
+          priority={firstSlide}
+          errorImage={errorImage}
         />
-      )}
-      {imagenBackdrop ? (
-        <>
-          <Image
-            src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.grande}${imagenBackdrop}`}
-            alt=""
-            width={0}
-            height={0}
-            sizes="100vw"
-            data-swiper-parallax="75%"
-            data-swiper-parallax-scale="1.10"
-            className={`${estilosImagenes} hidden lg:inline-block 2xl:hidden`}
-          />
-
-          <Image
-            src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.original}${imagenBackdrop}`}
-            alt=""
-            width={0}
-            height={0}
-            sizes="100vw"
-            data-swiper-parallax="75%"
-            data-swiper-parallax-scale="1.10"
-            className={`${estilosImagenes} hidden 2xl:inline-block `}
-          />
-        </>
-      ) : (
-        <Image
-          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.original}${imagenPoster}`}
+      </div>
+      <div data-swiper-parallax="75%" data-swiper-parallax-scale="1.10">
+        <CustomImage
+          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${imagenPoster}`}
           alt=""
-          width={0}
-          height={0}
-          sizes="100vw"
-          data-swiper-parallax="75%"
-          data-swiper-parallax-scale="1.10"
-          className={`${estilosImagenes} hidden lg:inline-block object-[50%,20%]`}
+          customClases={`${estilosImagenes} hidden md:inline-block lg:hidden`}
+          priority={firstSlide}
+          errorImage={errorImage}
         />
-      )}
+      </div>
+      <div data-swiper-parallax="75%" data-swiper-parallax-scale="1.10">
+        <CustomImage
+          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.grande}${imagenBackdrop}`}
+          alt=""
+          customClases={`${estilosImagenes} hidden lg:inline-block 2xl:hidden`}
+          priority={firstSlide}
+          errorImage={errorImage}
+        />
+      </div>
+      <div data-swiper-parallax="75%" data-swiper-parallax-scale="1.10">
+        <CustomImage
+          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.original}${imagenBackdrop}`}
+          alt=""
+          customClases={`${estilosImagenes} hidden 2xl:inline-block `}
+          priority={firstSlide}
+          errorImage={errorImage}
+        />
+      </div>
     </div>
   );
 }

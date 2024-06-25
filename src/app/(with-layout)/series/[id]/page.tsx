@@ -12,8 +12,26 @@ import HeaderHero from "@/components/PageID/SeriesYPeliculas/Hero/HeaderHero";
 import MainInfoHero from "@/components/PageID/SeriesYPeliculas/Hero/MainInfoHero";
 import fetchData from "@/services/fetchData";
 import SkeletonRedes from "@/components/skeletons/PagePeliculasSeries/SkeletonRedes";
+import { Metadata } from "next";
 
-export default async function SeriesID({ params }: { params: { id: string } }) {
+interface Props {
+  params: { id: string };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params;
+
+  const serie = await fetchData<DetalleSeries>(
+    `${BASE_URL_SERIE_DETAIL}${id}?append_to_response=aggregate_credits%2Ccontent_ratings%2Cexternal_ids%2Csimilar&language=es-MX`
+  );
+
+  return {
+    title: `${serie.name} — Movieverse`,
+    description: serie.overview,
+  };
+}
+
+export default async function SeriesID({ params }: Props) {
   const { id } = params;
   const serie = await fetchData<DetalleSeries>(
     `${BASE_URL_SERIE_DETAIL}${id}?append_to_response=aggregate_credits%2Ccontent_ratings%2Cexternal_ids%2Csimilar&language=es-MX`
