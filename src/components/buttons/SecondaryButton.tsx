@@ -17,7 +17,7 @@ export default function SecondaryButton({
   return (
     <Link
       href={destino}
-      className={`py-2 px-4 shadow-sm shadow-transparent flex items-center gap-2 text-nowrap rounded-full hover:shadow-main-black/35 border border-transparent hover:border-main-white/10 transition-shadow  backdrop-blur-sm  ${customStyles}`}
+      className={`py-2 px-4 shadow-sm shadow-transparent flex items-center gap-2 text-nowrap rounded-full hover:shadow-main-black/35 border border-transparent hover:border-main-white/10 transition-[box-shadow,opacity,border-color] backdrop-blur-sm ${customStyles}`}
     >
       <span className="first-letter:uppercase">{nombre}</span>
       {icon && <span className={`${icon} ${customIconStyles}`}></span>}

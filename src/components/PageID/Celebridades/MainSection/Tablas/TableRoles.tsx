@@ -21,10 +21,10 @@ export default function TableRoles({ titulo, participaciones }: Props) {
       <h2 className="text-xl md:text-2xl font-semibold capitalize">{titulo}</h2>
       <table>
         <tbody>
-          {participacionesOrdenadas.map((participacion) => (
+          {participacionesOrdenadas.map((participacion, i) => (
             <tr
               className="bg-secondary-black p-4 border-b-2 border-main-black hover:bg-hover transition-colors"
-              key={participacion.id}
+              key={participacion.id + i}
             >
               <td className="text-main-white w-fit py-2 px-2 text-xs sm:text-base md:text-sm lg:text-base">
                 {participacion.fecha && (

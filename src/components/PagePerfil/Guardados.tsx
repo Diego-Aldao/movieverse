@@ -23,6 +23,7 @@ export default function Guardados() {
       titulo="guardados"
       noInlinePadding={true}
       titleCustomSizes="text-2xl lg:text-4xl md:text-3xl"
+      noBlockMargin={true}
     >
       <>
         {guardados && guardados.length >= 1 ? (

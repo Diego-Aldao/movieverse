@@ -43,8 +43,8 @@ export default function SearchBar() {
       <form
         className={`w-full max-w-[400px] md:max-w-[600px] mx-auto right-0 left-0 overflow-hidden bg-main-black/35 backdrop-blur-sm flex gap-1 items-center rounded-full transition-all h-10 lg:h-12 absolute xl:relative xl:mx-0 xl:max-w-[450px] has-[input:focus]:border-main-white/35 border border-transparent xl:pr-4 ${
           searchVisible
-            ? "opacity-100 visible -bottom-[55px] lg:-bottom-[75px] xl:bottom-0 xl:visible xl:opacity-100"
-            : "opacity-0 invisible -bottom-[50px] lg:-bottom-[70px] xl:bottom-0 xl:visible xl:opacity-100"
+            ? "opacity-100 visible -bottom-[35px] md:-bottom-[45px] lg:-bottom-[65px] xl:bottom-0 xl:visible xl:opacity-100"
+            : "opacity-0 invisible -bottom-[30px] md:-bottom-[40px] lg:-bottom-[60px] xl:bottom-0 xl:visible xl:opacity-100"
         }`}
         onSubmit={handleNavigate}
       >
@@ -79,7 +79,9 @@ export default function SearchBar() {
           value={searchValue}
           ref={inputRef}
           onBlur={() => {
-            setSearchVisible(false);
+            setTimeout(() => {
+              setSearchVisible(false);
+            }, 100);
           }}
           onChange={(e) => {
             setSearchValue(e.target.value);

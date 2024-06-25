@@ -17,11 +17,10 @@ export default function Hero({ descripcion, imagenesHero, children }: Props) {
 
       <div className="flex flex-col w-full gap-4 max-w-7xl mx-auto px-4 md:px-8 lg:px-10 2xl:px-0 z-[2] pb-10 lg:pb-20">
         {children}
-        <div className="max-w-[550px] md:max-w-[600px] lg:max-w-[750px]  flex flex-col gap-2">
-          <p className="lg:text-lg relative text-sm md:text-base">
-            {descripcion}
-          </p>
-        </div>
+
+        <p className="lg:text-lg relative text-sm md:text-base line-clamp-6 max-w-[550px] md:max-w-[650px] lg:max-w-[830px] 2xl:max-w-[890px]">
+          {descripcion}
+        </p>
       </div>
     </section>
   );

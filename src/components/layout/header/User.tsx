@@ -9,7 +9,7 @@ export default function User() {
 
   return (
     <div
-      className="botonPerfil w-8 h-8 xl:w-9 xl:h-9 hidden lg:inline-block relative"
+      className="botonPerfil w-8 h-8 xl:w-9 xl:h-9 hidden md:inline-block relative"
       onMouseLeave={() => {
         setDropdownVisible(false);
       }}
