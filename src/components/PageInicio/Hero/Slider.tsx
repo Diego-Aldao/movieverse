@@ -46,26 +46,29 @@ export default function Slider() {
       )}
       {estrenosFiltrados && (
         <>
-          {estrenosFiltrados.map((estreno) => (
-            <SwiperSlide
-              className="w-full h-full overflow-hidden"
-              key={estreno.id}
-            >
-              <Slide
-                titulo={estreno.title}
-                votoPromedio={estreno.vote_average}
-                descripcion={estreno.overview}
-                id={estreno.id}
-                poster={estreno.poster_path}
-                generos={<Generos generos={estreno.genre_ids} />}
+          {estrenosFiltrados.map((estreno, i) => {
+            return (
+              <SwiperSlide
+                className="w-full h-full overflow-hidden"
+                key={estreno.id}
               >
-                <ImagenesSlide
-                  imagenPoster={estreno.poster_path}
-                  imagenBackdrop={estreno.backdrop_path}
-                />
-              </Slide>
-            </SwiperSlide>
-          ))}
+                <Slide
+                  titulo={estreno.title}
+                  votoPromedio={estreno.vote_average}
+                  descripcion={estreno.overview}
+                  id={estreno.id}
+                  poster={estreno.poster_path}
+                  generos={<Generos generos={estreno.genre_ids} />}
+                >
+                  <ImagenesSlide
+                    imagenPoster={estreno.poster_path}
+                    imagenBackdrop={estreno.backdrop_path}
+                    firstSlide={i === 0}
+                  />
+                </Slide>
+              </SwiperSlide>
+            );
+          })}
         </>
       )}
     </Swiper>

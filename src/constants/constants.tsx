@@ -30,6 +30,7 @@ export const LENGUAJE_ESP = "language=es-MX";
 export const BASE_URL_IMAGES = "https://image.tmdb.org/t/p/";
 
 export const TAMAÑOS_IMAGENES = {
+  posterPequeño: "w342",
   pequeño: "w500",
   mediano: "w780",
   grande: "w1280",
@@ -288,7 +289,7 @@ export const PROPIEDADES_FILTRO_ORDEN_SERIES = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     nombre: "titulo",
     letras: true,
     filtros: [
