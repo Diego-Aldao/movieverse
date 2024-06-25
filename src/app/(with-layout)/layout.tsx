@@ -21,7 +21,8 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Movieverse — Peliculas y Series",
-  description: "millones de peliculas y series por descubrir",
+  description:
+    "sitio web dedicado a la información sobre películas, series y celebridades",
 };
 
 export default function RootLayout({

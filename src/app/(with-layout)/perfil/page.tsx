@@ -4,6 +4,11 @@ import React from "react";
 import banner from "@/assets/banner.png";
 import profile from "@/assets/perfil.webp";
 import NoData from "@/components/errors/NoData";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Perfil de Saint Laurent — Movieverse",
+};
 
 export default function Perfil() {
   return (
