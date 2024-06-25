@@ -23,6 +23,7 @@ export default function Favoritos() {
       titulo="tus favoritos"
       noInlinePadding={true}
       titleCustomSizes="text-2xl lg:text-4xl md:text-3xl"
+      noBlockMargin={true}
     >
       <>
         {favoritos && favoritos.length >= 1 ? (
