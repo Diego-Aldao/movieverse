@@ -6,6 +6,7 @@ interface Props {
   headerChildren?: React.ReactNode;
   titleCustomSizes?: string;
   noInlinePadding?: boolean;
+  noBlockMargin?: boolean;
 }
 
 export default function CustomSection({
@@ -14,12 +15,13 @@ export default function CustomSection({
   headerChildren,
   titleCustomSizes,
   noInlinePadding,
+  noBlockMargin,
 }: Props) {
   return (
     <section
-      className={`flex flex-col gap-8 max-w-7xl mx-auto w-full relative my-20 ${
-        noInlinePadding ? "" : "px-4 md:px-8 lg:px-10 2xl:px-0"
-      }`}
+      className={`flex flex-col gap-8 max-w-7xl mx-auto w-full relative ${
+        noBlockMargin ? "" : "my-20"
+      } ${noInlinePadding ? "" : "px-4 md:px-8 lg:px-10 2xl:px-0"}`}
     >
       <header className="flex flex-col gap-4 md:gap-8">
         <h2
