@@ -8,9 +8,10 @@ import errorImageBackdrop from "@/assets/errorImagebackdrop.webp";
 interface Props {
   imagenesUrls: string[];
   tipo: string;
+  altImagen: string;
 }
 
-export default function MediaContent({ imagenesUrls, tipo }: Props) {
+export default function MediaContent({ imagenesUrls, tipo, altImagen }: Props) {
   const [currentImage, setCurrentImage] = useState<string>(imagenesUrls[0]);
 
   useEffect(() => {
@@ -36,16 +37,24 @@ export default function MediaContent({ imagenesUrls, tipo }: Props) {
       >
         <CustomImage
           src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${currentImage}`}
-          alt=""
-          customClases=" w-full h-full md:hidden"
+          alt={altImagen}
+          customClases=" w-full h-full sm:hidden"
           errorImage={
             tipo === "posters" ? errorImagePoster : errorImageBackdrop
           }
         />
         <CustomImage
-          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${currentImage}`}
-          alt=""
-          customClases="hidden md:inline-block"
+          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${currentImage}`}
+          alt={altImagen}
+          customClases="hidden sm:inline-block lg:hidden"
+          errorImage={
+            tipo === "posters" ? errorImagePoster : errorImageBackdrop
+          }
+        />
+        <CustomImage
+          src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.grande}${currentImage}`}
+          alt={altImagen}
+          customClases="hidden lg:inline-block"
           errorImage={
             tipo === "posters" ? errorImagePoster : errorImageBackdrop
           }
@@ -70,7 +79,7 @@ export default function MediaContent({ imagenesUrls, tipo }: Props) {
           >
             <CustomImage
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${imagenUrl}`}
-              alt=""
+              alt={altImagen}
               customClases="object-contain"
               errorImage={
                 tipo === "posters" ? errorImagePoster : errorImageBackdrop
