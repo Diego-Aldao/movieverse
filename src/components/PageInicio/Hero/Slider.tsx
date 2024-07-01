@@ -64,6 +64,7 @@ export default function Slider() {
                     imagenPoster={estreno.poster_path}
                     imagenBackdrop={estreno.backdrop_path}
                     firstSlide={i === 0}
+                    altImagenes={estreno.title}
                   />
                 </Slide>
               </SwiperSlide>
