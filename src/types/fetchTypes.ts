@@ -389,9 +389,9 @@ export interface DetalleSeries {
   in_production: boolean;
   languages: string[];
   last_air_date: Date;
-  last_episode_to_air: LastEpisodeToAir;
+  last_episode_to_air: LastEpisodeToAir | null;
   name: string;
-  next_episode_to_air: null;
+  next_episode_to_air: null | LastEpisodeToAir;
   networks: Network[];
   number_of_episodes: number;
   number_of_seasons: number;
@@ -519,7 +519,7 @@ export interface LastEpisodeToAir {
   name: string;
   vote_average: number;
   vote_count: number;
-  air_date: Date;
+  air_date: string;
   episode_number: number;
   episode_type: string;
   production_code: string;
@@ -561,7 +561,7 @@ export interface ReviewsResult {
   vote_count: number;
 }
 export interface Season {
-  air_date: Date;
+  air_date: string;
   episode_count: number;
   id: number;
   name: string;
