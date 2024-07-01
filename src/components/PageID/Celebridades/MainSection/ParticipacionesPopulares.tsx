@@ -49,7 +49,7 @@ export default function ParticipacionesPopulares({
             <div className="relative after:absolute after:inset-0 after:bg-main-black/75 after:z-[1] bg-secondary-black w-full h-full rounded-md overflow-hidden">
               <CustomImage
                 src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${participacion.backdrop_path}`}
-                alt=""
+                alt={participacion.title || participacion.name || ""}
                 errorImage={errorImage}
                 triggerOnce={true}
               />

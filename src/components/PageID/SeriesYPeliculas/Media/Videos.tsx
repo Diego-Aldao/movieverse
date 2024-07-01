@@ -110,7 +110,7 @@ export default function Videos({ id, baseUrl }: Props) {
               >
                 <CustomImage
                   src={miniatura.imagenPequeña}
-                  alt=""
+                  alt={currentVideo.nombre}
                   errorImage={errorImage}
                 />
               </div>

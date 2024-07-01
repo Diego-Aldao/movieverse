@@ -8,12 +8,14 @@ interface Props {
   imagenPoster?: string;
   imagenBackdrop: string | null | undefined;
   firstSlide: boolean;
+  altImagenes: string;
 }
 
 export default function ImagenesSlide({
   imagenPoster,
   imagenBackdrop,
   firstSlide,
+  altImagenes,
 }: Props) {
   const [ref, inView] = useInView({ threshold: 0 });
 
@@ -30,7 +32,7 @@ export default function ImagenesSlide({
       <div data-swiper-parallax="75%" data-swiper-parallax-scale="1.10">
         <CustomImage
           src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${imagenPoster}`}
-          alt=""
+          alt={altImagenes}
           customClases={`${estilosImagenes} md:hidden`}
           priority={firstSlide}
           errorImage={errorImage}
@@ -39,7 +41,7 @@ export default function ImagenesSlide({
       <div data-swiper-parallax="75%" data-swiper-parallax-scale="1.10">
         <CustomImage
           src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${imagenPoster}`}
-          alt=""
+          alt={altImagenes}
           customClases={`${estilosImagenes} hidden md:inline-block lg:hidden`}
           priority={firstSlide}
           errorImage={errorImage}
@@ -48,7 +50,7 @@ export default function ImagenesSlide({
       <div data-swiper-parallax="75%" data-swiper-parallax-scale="1.10">
         <CustomImage
           src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.grande}${imagenBackdrop}`}
-          alt=""
+          alt={altImagenes}
           customClases={`${estilosImagenes} hidden lg:inline-block 2xl:hidden`}
           priority={firstSlide}
           errorImage={errorImage}
@@ -57,7 +59,7 @@ export default function ImagenesSlide({
       <div data-swiper-parallax="75%" data-swiper-parallax-scale="1.10">
         <CustomImage
           src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.original}${imagenBackdrop}`}
-          alt=""
+          alt={altImagenes}
           customClases={`${estilosImagenes} hidden 2xl:inline-block `}
           priority={firstSlide}
           errorImage={errorImage}

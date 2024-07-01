@@ -54,7 +54,7 @@ function MiniCardInteractiva({
         >
           <CustomImage
             src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
-            alt="bg-imagen"
+            alt={nombre}
             errorImage={errorImage}
             triggerOnce={true}
           />
@@ -81,7 +81,7 @@ function MiniCardInteractiva({
         >
           <CustomImage
             src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
-            alt="bg-imagen"
+            alt={nombre}
             errorImage={errorImage}
             triggerOnce={true}
           />
@@ -112,7 +112,7 @@ function MiniCardSimple({
     >
       <CustomImage
         src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
-        alt="bg-imagen"
+        alt={nombre}
         errorImage={errorImage}
         triggerOnce={true}
       />

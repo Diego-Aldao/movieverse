@@ -37,7 +37,7 @@ export default function Similares({ similares, mediaType }: Props) {
             </span>
             <CustomImage
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${similar.backdrop_path}`}
-              alt=""
+              alt={similar.name || similar.title || ""}
               errorImage={errorImage}
               triggerOnce={true}
             />

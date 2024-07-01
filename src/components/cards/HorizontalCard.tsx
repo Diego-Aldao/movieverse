@@ -12,21 +12,22 @@ import errorImageBackdrop from "@/assets/errorImagebackdrop.webp";
 
 interface Props {
   item: Serie;
+  altImagen: string;
 }
 
-export default function HorizontalCard({ item }: Props) {
+export default function HorizontalCard({ item, altImagen }: Props) {
   return (
     <div className="z-[2] max-w-[550px] md:max-w-[700px] xl:max-w-[900px] w-full  rounded-md overflow-hidden after:inset-0 after:absolute relative after:bg-gradient-to-r after:from-secondary-black after:via-[#242526b7]  after:overflow-hidden after:to-transparent min-h-[200px] h-[250px] md:h-[300px] xl:h-[370px] lg:h-[300px]">
       <CustomImage
         src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.mediano}${item.backdrop_path}`}
-        alt="bg-imagen"
+        alt={altImagen}
         customClases="lg:hidden"
         errorImage={errorImageBackdrop}
         triggerOnce={false}
       />
       <CustomImage
         src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.grande}${item.backdrop_path}`}
-        alt="bg-imagen"
+        alt={altImagen}
         customClases="hidden lg:block"
         errorImage={errorImageBackdrop}
         triggerOnce={false}
@@ -36,7 +37,7 @@ export default function HorizontalCard({ item }: Props) {
           <div className="rounded-md overflow-hidden h-[105px] xl:h-[150px] w-[70px] xl:w-[100px] hidden md:block">
             <CustomImage
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.posterPequeño}${item.poster_path}`}
-              alt="bg-imagen"
+              alt={altImagen}
               customClases="xl:hidden"
               errorImage={errorImagePoster}
               width={70}
@@ -45,7 +46,7 @@ export default function HorizontalCard({ item }: Props) {
             />
             <CustomImage
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.posterPequeño}${item.poster_path}`}
-              alt="bg-imagen"
+              alt={altImagen}
               customClases="hidden xl:block"
               errorImage={errorImagePoster}
               width={100}

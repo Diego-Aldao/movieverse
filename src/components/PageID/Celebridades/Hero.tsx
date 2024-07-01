@@ -6,9 +6,10 @@ import errorImagen from "@/assets/errorImagePoster.webp";
 
 interface Props {
   imagenes: ImagesCelebridad;
+  celebridad: string;
 }
 
-export default function Hero({ imagenes }: Props) {
+export default function Hero({ imagenes, celebridad }: Props) {
   const cantidadDeImagenes =
     imagenes.profiles.length > 6
       ? imagenes.profiles.slice(1, 7)
@@ -30,7 +31,7 @@ export default function Hero({ imagenes }: Props) {
           >
             <CustomImage
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.posterPequeño}${imagen.file_path}`}
-              alt=""
+              alt={`imagen de la celebridad ${celebridad}`}
               errorImage={errorImagen}
               triggerOnce={true}
             />

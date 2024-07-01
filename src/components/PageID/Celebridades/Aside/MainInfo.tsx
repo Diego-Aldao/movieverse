@@ -21,7 +21,7 @@ export default function MainInfo({
       <div className="imagen max-w-[500px] min-h-[480px] lg:min-h-[450px] xl:min-h-[525px] sm:min-h-[370px] mx-auto sm:max-w-[250px] md:max-w-full w-full sm:rounded-md sm:overflow-hidden sm:after:hidden relative after:absolute after:inset-0 after:from-[#101010] after:bg-gradient-to-t after:from-10% after:to-transparent after:via-transparent">
         <CustomImage
           src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${imageSrc}`}
-          alt=""
+          alt={`imagen de la celebridad ${nombre}`}
           errorImage={errorImage}
         />
       </div>
