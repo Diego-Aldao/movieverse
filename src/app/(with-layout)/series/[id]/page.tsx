@@ -13,6 +13,7 @@ import MainInfoHero from "@/components/PageID/SeriesYPeliculas/Hero/MainInfoHero
 import fetchData from "@/services/fetchData";
 import SkeletonRedes from "@/components/skeletons/PagePeliculasSeries/SkeletonRedes";
 import { Metadata } from "next";
+import UltimaTemporada from "@/components/PageID/Series/UltimaTemporada";
 
 interface Props {
   params: { id: string };
@@ -67,6 +68,16 @@ export default async function SeriesID({ params }: Props) {
       </Hero>
       <section className="main-content px-4 md:px-8 lg:px-10 max-w-7xl mx-auto 2xl:px-0 pb-20 grid w-full gap-12 lg:grid-cols-[2.5fr,1fr] lg:gap-x-4 xl:gap-x-8">
         <Reparto cast={serie.aggregate_credits.cast} />
+        <UltimaTemporada
+          ultimoEpisodio={serie.last_episode_to_air}
+          proximoEpisodio={serie.next_episode_to_air}
+          numeroDeEpisodios={serie.number_of_episodes}
+          temporadas={serie.seasons}
+          numeroDeTemporadas={serie.number_of_seasons}
+          enProduccion={serie.in_production}
+          banner={serie.backdrop_path}
+          id={id}
+        />
         <Media
           id={id}
           idiomaOriginal={serie.original_language}
