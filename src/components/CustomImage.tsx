@@ -13,6 +13,7 @@ interface Props {
   width?: number;
   height?: number;
   triggerOnce?: boolean;
+  unoptimized?: boolean;
 }
 
 export default function CustomImage({
@@ -24,6 +25,7 @@ export default function CustomImage({
   noAnimation,
   width,
   height,
+  unoptimized,
   triggerOnce,
 }: Props) {
   const [currentSrc, setCurrentSrc] = useState<string | StaticImageData>(src);
@@ -43,6 +45,7 @@ export default function CustomImage({
       height={height || 0}
       sizes="100vw"
       ref={ref}
+      unoptimized={unoptimized}
       placeholder="blur"
       blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
       onError={() => {
