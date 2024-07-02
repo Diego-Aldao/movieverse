@@ -31,7 +31,7 @@ export default function MediaContent({ imagenesUrls, tipo, altImagen }: Props) {
       }`}
     >
       <div
-        className={`current-media rounded-sm overflow-hidden border-2 border-secondary-black md:max-w-full lg:min-h-0 w-full md:max-h-full mx-auto ${
+        className={`current-media rounded-md overflow-hidden border-2 border-secondary-black md:max-w-full lg:min-h-0 w-full md:max-h-full mx-auto ${
           tipo === "posters" && "max-w-[400px] max-h-[600px]"
         }`}
       >
@@ -68,10 +68,10 @@ export default function MediaContent({ imagenesUrls, tipo, altImagen }: Props) {
         {imagenesUrls.slice(0, 12).map((imagenUrl) => (
           <div
             key={imagenUrl}
-            className={`rounded-sm overflow-hidden h-fit border-2 transition-colors border-opacity-50 after:inset-0 after:absolute after:bg-main-black  relative ${
+            className={`rounded-md overflow-hidden h-fit border-2 transition-[opacity,border-color] cursor-pointer  after:inset-0 after:absolute after:bg-main-black  relative ${
               currentImage === imagenUrl
-                ? "border-main-color after:opacity-0"
-                : "border-transparent after:opacity-50"
+                ? "border-main-color after:bg-main-black/0 hover:border-main-color"
+                : "border-transparent after:bg-main-black/50 hover:border-secondary-white/25 hover:after:bg-main-black/40"
             }`}
             onClick={() => {
               handleClick(imagenUrl);
@@ -81,6 +81,7 @@ export default function MediaContent({ imagenesUrls, tipo, altImagen }: Props) {
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${imagenUrl}`}
               alt={altImagen}
               customClases="object-contain"
+              unoptimized={true}
               errorImage={
                 tipo === "posters" ? errorImagePoster : errorImageBackdrop
               }
