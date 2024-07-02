@@ -61,7 +61,7 @@ export default function Slide({
             </div>
 
             <h1
-              className={`transition-all line-clamp-2 delay-150 w-fit text-3xl uppercase font-semibold sm:text-4xl md:text-5xl  xl:text-6xl max-w-[300px] sm:max-w-[550px] md:max-w-[700px] lg:max-w-[850px]`}
+              className={`transition-all line-clamp-2 delay-150 w-fit text-3xl uppercase font-semibold sm:text-4xl md:text-5xl tracking-tight xl:text-6xl max-w-[300px] sm:max-w-[550px] md:max-w-[700px] lg:max-w-[850px]`}
             >
               {titulo}
             </h1>
@@ -69,7 +69,7 @@ export default function Slide({
           {generos}
           <div
             ref={ref2}
-            className={`transition-all relative flex flex-col gap-5 max-w-[500px] md:max-w-[600px] lg:max-w-[600px] xl:max-w-[700px] ${
+            className={`transition-all relative flex flex-col gap-5 max-w-[500px] md:max-w-[600px] lg:max-w-[600px] xl:max-w-[850px] ${
               inView2 ? "opacity-100 bottom-0" : "opacity-0 bottom-4"
             }`}
           >

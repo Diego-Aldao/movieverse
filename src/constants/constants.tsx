@@ -356,12 +356,12 @@ export const INTERNAL_NAVIGATION = [
   },
   {
     id: 2,
-    nombre: "peliculas",
+    nombre: "películas",
     destino: "/peliculas",
   },
   {
     id: 3,
-    nombre: "series de television",
+    nombre: "series de televisión",
     destino: "/series",
   },
   {
