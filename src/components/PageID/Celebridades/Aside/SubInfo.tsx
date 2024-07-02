@@ -1,4 +1,7 @@
+"use client";
 import React from "react";
+import { departamentos } from "@/utils/traducciones";
+import { useDateFormatter } from "@react-aria/i18n";
 
 interface Props {
   nombre: string;
@@ -28,6 +31,12 @@ export default function SubInfo({
   nombre,
   lugarDeNacimiento,
 }: Props) {
+  let formatter = useDateFormatter({ dateStyle: "long" });
+
+  const nacimientoToDate = new Date(nacimiento);
+
+  const nacimientoFormated = formatter.format(nacimientoToDate);
+
   return (
     <div className="sub-info px-4 flex flex-col gap-4 sm:px-0">
       <h2 className="hidden sm:inline-block md:hidden text-2xl capitalize font-semibold">
@@ -40,7 +49,7 @@ export default function SubInfo({
             por
           </span>
           <span className="first-letter:uppercase text-sm text-secondary-white">
-            {conocidoPor}
+            {departamentos[conocidoPor]}
           </span>
         </li>
         <li className="flex flex-col">
@@ -60,7 +69,7 @@ export default function SubInfo({
         <li className="flex flex-col">
           <span className="first-letter:uppercase text-lg">nacimiento</span>
           <span className="first-letter:uppercase text-sm text-secondary-white">
-            {nacimiento}
+            {nacimientoFormated}
           </span>
         </li>
         <li className="flex flex-col">
