@@ -44,7 +44,9 @@ export default async function Redes({ id }: Props) {
                   }${valueRedSocial}`}
                   target="_blank"
                 >
-                  <span className={`${icono} text-main-white w-8 h-8`}></span>
+                  <span
+                    className={`${icono} text-main-white w-8 h-8 hover:text-main-color transition-[color]`}
+                  ></span>
                 </Link>
               </li>
             );
