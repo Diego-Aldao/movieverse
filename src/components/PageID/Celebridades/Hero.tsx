@@ -16,7 +16,7 @@ export default function Hero({ imagenes, celebridad }: Props) {
       : imagenes.profiles.slice(0, 6);
   const cantidadDeColumnas = Math.min(imagenes.profiles.length, 6);
   return (
-    <div className="hero absolute top-0 left-0 w-full after:absolute after:inset-0 after:bg-[#101010ce] hidden lg:block">
+    <div className="hero absolute top-0 left-0 w-full hidden lg:block">
       <div
         className={`grid lg:grid grid-cols-${cantidadDeColumnas} ${
           cantidadDeImagenes.length === 6 ? "w-full" : "w-fit"
@@ -24,7 +24,7 @@ export default function Hero({ imagenes, celebridad }: Props) {
       >
         {cantidadDeImagenes.map((imagen, index) => (
           <div
-            className={`imagen rounded-md overflow-hidden min-h-[300px] ${
+            className={`imagen rounded-md overflow-hidden min-h-[300px] relative after:absolute after:inset-0 after:bg-main-black/95   ${
               index % 2 === 0 ? "pt-20" : "pb-20"
             }`}
             key={imagen.file_path}
@@ -34,6 +34,7 @@ export default function Hero({ imagenes, celebridad }: Props) {
               alt={`imagen de la celebridad ${celebridad}`}
               errorImage={errorImagen}
               triggerOnce={true}
+              unoptimized={true}
             />
           </div>
         ))}
