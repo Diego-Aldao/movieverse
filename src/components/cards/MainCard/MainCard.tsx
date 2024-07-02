@@ -52,9 +52,10 @@ export default function MainCard({
       <div className="imagen bg-secondary-black rounded-md h-full w-full overflow-hidden relative before:inset-[3px] md:before:inset-[4px] before:absolute before:bg-[#1010103d] before:rounded-md before:z-[2]">
         <CustomImage
           src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.posterPequeño}${imagen}`}
-          alt="poster de pelicula"
+          alt={nombre}
           noAnimation={true}
           errorImage={errorImage}
+          unoptimized={true}
         />
       </div>
       <div className="contenido rounded-md w-full h-full absolute top-0 left-0 z-[2] after:rounded-md after:inset-[3px] md:after:inset-[4px] after:absolute after:bg-gradient-to-t after:from-[#101010] after:via-transparent after:to-transparent flex flex-col justify-between p-2 md:p-3 xl:p-4">

@@ -10,7 +10,6 @@ interface Props {
 export default function Generos({ generos }: Props) {
   const [ref, inView] = useInView({
     threshold: 0,
-    rootMargin: "-50px -150px -50px -150px",
   });
   const currentGeneros = GENEROS_PELICULAS.filter((genero) => {
     return generos?.includes(genero.id);

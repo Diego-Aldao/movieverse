@@ -77,11 +77,13 @@ export default async function SeriesID({ params }: Props) {
           enProduccion={serie.in_production}
           banner={serie.backdrop_path}
           id={id}
+          nombre={serie.name}
         />
         <Media
           id={id}
           idiomaOriginal={serie.original_language}
           mediaType="serie"
+          altImagen={serie.name}
         />
         <Similares similares={serie.similar} mediaType={"tv"} />
         <aside className="lg:row-start-1 lg:col-start-2 flex flex-col gap-8">

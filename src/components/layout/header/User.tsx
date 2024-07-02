@@ -25,14 +25,14 @@ export default function User() {
       >
         <Image
           src={ImagenUsuario}
-          alt=""
+          alt="imagen del usuario saint laurent"
           width={32}
           height={32}
           className="inline-block xl:hidden"
         />
         <Image
           src={ImagenUsuario}
-          alt=""
+          alt="imagen del usuario saint laurent"
           width={36}
           height={36}
           className="hidden xl:inline-block"
@@ -52,7 +52,12 @@ export default function User() {
                 <span
                   className={`rounded-full w-12 h-12 mb-1 overflow-hidden border-2 border-transparent transition-colors group-hover:border-main-color`}
                 >
-                  <Image src={ImagenUsuario} alt="" width={48} height={48} />
+                  <Image
+                    src={ImagenUsuario}
+                    alt="imagen del usuario saint laurent"
+                    width={48}
+                    height={48}
+                  />
                 </span>
                 <span className="text-sm xl:text-base first-letter:uppercase text-nowrap">
                   ver perfil

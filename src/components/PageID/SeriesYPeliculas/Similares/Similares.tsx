@@ -18,7 +18,7 @@ export default function Similares({ similares, mediaType }: Props) {
   return (
     <CustomSection
       titulo="similares"
-      customStyles="lg:col-start-2"
+      customStyles="lg:col-start-2 lg:row-start-2 lg:row-span-2"
       asideSection={true}
     >
       <div className="main-content grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-1">
@@ -30,16 +30,17 @@ export default function Similares({ similares, mediaType }: Props) {
                 : `/series/${similar.id}`
             }
             key={similar.id}
-            className="relative flex items-center justify-center after:absolute after:inset-0 after:bg-main-black/75 rounded overflow-hidden max-h-[100px] lg:max-h-[150px]"
+            className="relative flex hover:border-secondary-white/25 border-2 transition-[border-color,opacity] border-transparent items-center justify-center after:absolute after:inset-0 after:bg-main-black/75 rounded-md hover:after:bg-main-black/65 overflow-hidden max-h-[100px] lg:max-h-[150px]"
           >
             <span className="absolute font-semibold z-[2] text-xs md:text-sm w-full text-center line-clamp-1 px-2 lg:text-base xl:text-lg">
               {"name" in similar ? similar.name : similar.title}
             </span>
             <CustomImage
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${similar.backdrop_path}`}
-              alt=""
+              alt={similar.name || similar.title || ""}
               errorImage={errorImage}
               triggerOnce={true}
+              unoptimized={true}
             />
           </Link>
         ))}

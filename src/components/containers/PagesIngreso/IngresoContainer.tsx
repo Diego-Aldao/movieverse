@@ -16,7 +16,7 @@ export default function IngresoContainer({ children }: Props) {
         <div className="absolute top-0 left-0 w-full h-full px-6 bg-main-black z-[-1] after:absolute after:inset-0 after:bg-[#101010a9]">
           <Image
             src={imagen}
-            alt=""
+            alt="imagen aside de la pagina ingreso de movieverse"
             width={0}
             height={0}
             sizes="100vw"

@@ -16,7 +16,7 @@ export default function Perfil() {
       <div className="banner w-full h-[200px] md:h-[300px] lg:h-[400px] xl:h-[450px] 2xl:h-[500px] rounded-3xl border-4 border-secondary-black overflow-hidden">
         <Image
           src={banner}
-          alt=""
+          alt="banner del usuario saint laurent"
           width={0}
           height={0}
           sizes="100vw"
@@ -28,14 +28,14 @@ export default function Perfil() {
           <div className="foto rounded-full  w-24 h-24 lg:w-32 lg:h-32 bg-main-white border-4 border-secondary-black overflow-hidden">
             <Image
               src={profile}
-              alt="perfil"
+              alt="imagen de perfil del usuario saint laurent"
               width={96}
               height={96}
               className="lg:hidden"
             />
             <Image
               src={profile}
-              alt="perfil"
+              alt="imagen de perfil del usuario saint laurent"
               width={128}
               height={128}
               className="hidden lg:inline-block"

@@ -11,6 +11,7 @@ import ParticipacionesPopulares from "@/components/PageID/Celebridades/MainSecti
 import TableRoles from "@/components/PageID/Celebridades/MainSection/Tablas/TableRoles";
 import TablesCrew from "@/components/PageID/Celebridades/MainSection/Tablas/TablesCrew";
 import type { Metadata } from "next";
+import { departamentos } from "@/utils/traducciones";
 
 type Props = {
   params: { id: string };
@@ -36,14 +37,10 @@ export default async function CelebridadId({ params }: Props) {
   );
   return (
     <>
-      <Hero imagenes={celebridad.images} />
+      <Hero imagenes={celebridad.images} celebridad={celebridad.name} />
       <main className="sm:pt-24 lg:pt-48 grid gap-12 md:grid-cols-[250px,_1fr] lg:grid-cols-[300px,_1fr] xl:grid-cols-[350px,_1fr] md:gap-x-4 md:px-8 lg:px-10 max-w-7xl mx-auto 2xl:px-0 relative pb-20">
         <div className="flex flex-col gap-8 sm:grid sm:grid-cols-[250px,1fr] md:flex sm:px-4 md:px-0">
-          <MainInfo
-            imageSrc={celebridad.profile_path}
-            nombre={celebridad.name}
-            conocidoPor={celebridad.known_for_department}
-          >
+          <MainInfo imageSrc={celebridad.profile_path} nombre={celebridad.name}>
             <Redes redes={celebridad.external_ids} />
           </MainInfo>
           <SubInfo
@@ -60,7 +57,7 @@ export default async function CelebridadId({ params }: Props) {
         <div className="w-full px-4 md:px-0 flex flex-col gap-8">
           <header className="md:flex flex-col gap-2 hidden">
             <h1 className="text-4xl font-semibold">{celebridad.name}</h1>
-            <span className="">{celebridad.known_for_department}</span>
+            <span>{departamentos[celebridad.known_for_department]}</span>
           </header>
           <Biografia biografia={celebridad.biography} />
           <ParticipacionesPopulares

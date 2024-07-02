@@ -1,8 +1,9 @@
 "use client";
 import CustomImage from "@/components/CustomImage";
-import MainButton from "@/components/buttons/MainButton";
 import CustomSection from "@/components/containers/PageDetalleMultimedia/CustomSection";
 import MainTag from "@/components/tags/MainTag";
+import errorImageBackdrop from "@/assets/errorImageBackdropPequeño.webp";
+import errorImagePoster from "@/assets/errorImagePoster.webp";
 import { BASE_URL_IMAGES, TAMAÑOS_IMAGENES } from "@/constants/constants";
 import { LastEpisodeToAir, Season } from "@/types/fetchTypes";
 import getYearFromDate from "@/utils/getYearFromDate";
@@ -12,7 +13,6 @@ import {
   parseDate,
 } from "@internationalized/date";
 import { useDateFormatter } from "@react-aria/i18n";
-import Link from "next/link";
 import React from "react";
 
 interface Props {
@@ -24,13 +24,14 @@ interface Props {
   enProduccion: boolean;
   banner: string;
   id: string;
+  nombre: string;
 }
 
 export default function UltimaTemporada({
   ultimoEpisodio,
   temporadas,
   banner,
-  id,
+  nombre,
 }: Props) {
   const formater = useDateFormatter({ dateStyle: "medium" });
   const titulo =
@@ -66,23 +67,23 @@ export default function UltimaTemporada({
         <div className="imagen w-full relative after:inset-0 after:absolute after:bg-gradient-to-b after:from-transparent after:via-main-black/75 after:to-main-black rounded-md overflow-hidden after:sm:bg-main-black/75 after:sm:from-transparent after:sm:to-transparent after:sm:via-transparent sm:max-h-[300px] xl:max-h-[400px]">
           <CustomImage
             src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${temporadaActual.poster_path}`}
-            alt=""
+            alt={`imagen de la ${temporadaActual.name} de ${nombre}`}
             customClases="sm:hidden"
-            errorImage={""}
+            errorImage={errorImageBackdrop}
           />
           <CustomImage
             src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.grande}${banner}`}
-            alt=""
+            alt={`imagen de la ${temporadaActual.name} de ${nombre}`}
             customClases="hidden sm:block"
-            errorImage={""}
+            errorImage={errorImageBackdrop}
           />
         </div>
         <div className="absolute flex flex-col sm:flex-row gap-4 w-full items-start px-2 sm:px-4">
           <div className="min-w-[150px] h-[210px] xl:min-w-[200px] xl:min-h-[280px] hidden sm:block rounded-md overflow-hidden">
             <CustomImage
               src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${temporadaActual.poster_path}`}
-              alt=""
-              errorImage={""}
+              alt={`imagen de la ${temporadaActual.name} de ${nombre}`}
+              errorImage={errorImagePoster}
             />
           </div>
 

@@ -25,11 +25,9 @@ export default function Slide({
 }: Props) {
   const [ref, inView] = useInView({
     threshold: 0,
-    rootMargin: "-50px -150px -50px -150px",
   });
   const [ref2, inView2] = useInView({
     threshold: 0,
-    rootMargin: "-50px -150px -50px -150px",
   });
 
   return (

@@ -55,7 +55,12 @@ export default function MenuMobile() {
             className="profile rounded-t-lg overflow-hidden relative flex gap-2 items-center py-6 px-4 after:absolute after:w-1/2 after:h-[1px] after:bottom-0 after:left-0 after:right-0 after:mx-auto after:bg-main-white/15 mt-12 rounded-lg hover:bg-main-black bg-main-black/5 transition-colors"
           >
             <div className="img-profile rounded-full bg-main-white w-14 h-14 overflow-hidden border-2 border-main-black">
-              <Image src={imgPerfil} alt="" width={56} height={56} />
+              <Image
+                src={imgPerfil}
+                alt="imagen de perfil del usuario saint laurent"
+                width={56}
+                height={56}
+              />
             </div>
             <div className="data-user flex flex-col">
               <span className="capitalize backdrop-blur-sm bg-main-black/15">

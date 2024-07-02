@@ -16,9 +16,15 @@ interface Props {
   idiomaOriginal: string;
   id: string | string[];
   mediaType: string;
+  altImagen: string;
 }
 
-export default function NewMedia({ id, idiomaOriginal, mediaType }: Props) {
+export default function NewMedia({
+  id,
+  idiomaOriginal,
+  mediaType,
+  altImagen,
+}: Props) {
   const BASE_URL =
     mediaType === "serie" ? BASE_URL_SERIE_DETAIL : BASE_URL_MOVIE_DETAIL;
   const { data: imagenes, loading } = FetchDataClient<ImagenesMedia>(
@@ -54,7 +60,11 @@ export default function NewMedia({ id, idiomaOriginal, mediaType }: Props) {
           {currentMedia === "videos" ? (
             <Videos id={id} baseUrl={BASE_URL} />
           ) : (
-            <MediaContent imagenesUrls={imagenesMedia} tipo={currentMedia} />
+            <MediaContent
+              imagenesUrls={imagenesMedia}
+              tipo={currentMedia}
+              altImagen={altImagen}
+            />
           )}
         </CustomSection>
       )}

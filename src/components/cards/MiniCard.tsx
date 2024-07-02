@@ -48,13 +48,13 @@ function MiniCardInteractiva({
       {noLink ? (
         <div
           ref={ref}
-          className={`w-full flex  h-[120px] sm:h-full after:bg-[#242526b7] transition-all after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full ${customStyles} ${
+          className={`w-full flex border border-transparent hover:border-secondary-white/50 hover:after:bg-main-black/65 h-[120px] sm:h-full after:bg-main-black/75 transition-all after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full ${customStyles} ${
             inView ? "opacity-100 top-0" : "opacity-0 top-4"
           }`}
         >
           <CustomImage
             src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
-            alt="bg-imagen"
+            alt={nombre}
             errorImage={errorImage}
             triggerOnce={true}
           />
@@ -75,13 +75,13 @@ function MiniCardInteractiva({
             handleClick(id);
           }}
           ref={ref}
-          className={`w-full flex items-center justify-center h-[120px] sm:h-full after:bg-[#242526b7] transition-all after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full ${customStyles} ${
+          className={`w-full flex border border-transparent hover:border-secondary-white/50 hover:after:bg-main-black/65 items-center justify-center h-[120px] sm:h-full after:bg-main-black/75 transition-all after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full ${customStyles} ${
             inView ? "opacity-100 top-0" : "opacity-0 top-4"
           }`}
         >
           <CustomImage
             src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
-            alt="bg-imagen"
+            alt={nombre}
             errorImage={errorImage}
             triggerOnce={true}
           />
@@ -106,13 +106,13 @@ function MiniCardSimple({
   return (
     <div
       ref={ref}
-      className={`w-full flex  h-[120px] sm:h-full after:bg-[#242526b7] transition-all after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full ${customStyles} ${
+      className={`w-full flex h-[120px] sm:h-full after:bg-main-black/75 transition-all after:inset-0 after:absolute relative rounded-md overflow-hidden max-w-[370px] mx-auto sm:max-w-full md:h-full ${customStyles} ${
         inView ? "opacity-100 top-0" : "opacity-0 top-4"
       }`}
     >
       <CustomImage
         src={`${BASE_URL_IMAGES}${TAMAÑOS_IMAGENES.pequeño}${pathImagen}`}
-        alt="bg-imagen"
+        alt={nombre}
         errorImage={errorImage}
         triggerOnce={true}
       />
@@ -122,7 +122,6 @@ function MiniCardSimple({
         </h2>
         {children}
       </div>
-
       <MainButton
         nombre="ver detalle"
         destino={`/${media_type}/${id}`}

@@ -49,7 +49,7 @@ export default function Filtros({
           onClick={() => {
             handleFiltro(filtro.nombre);
           }}
-          className={`capitalize transition-colors ${
+          className={`capitalize transition-colors cursor-pointer hover:text-main-color ${
             filtro.nombre === currentMedia
               ? "text-main-color"
               : "text-main-white"

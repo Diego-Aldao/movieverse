@@ -53,7 +53,10 @@ export default function MejoresSeries() {
               style={divStyle}
               className={`contenedor-horizontal-card lg:py-16 lg:rounded-md  bg-cover bg-no-repeat hidden sm:flex justify-center after:inset-0 after:absolute relative after: bg-main-black lg:after:bg-[#242526f1] after:bg-main-black`}
             >
-              <HorizontalCard item={detailedSerie} />
+              <HorizontalCard
+                altImagen={detailedSerie.name}
+                item={detailedSerie}
+              />
             </div>
           )}
 

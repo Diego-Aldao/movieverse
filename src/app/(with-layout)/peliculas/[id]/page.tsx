@@ -71,6 +71,7 @@ export default async function DetallePelicula({ params }: Props) {
       <section className="main-content px-4 md:px-8 lg:px-10 max-w-7xl mx-auto 2xl:px-0 pb-20 grid w-full gap-12 lg:grid-cols-[2.5fr,1fr] lg:gap-x-4 xl:gap-x-8">
         <Reparto cast={pelicula.credits.cast} />
         <Media
+          altImagen={pelicula.title}
           id={id}
           idiomaOriginal={pelicula.original_language}
           mediaType="movie"
